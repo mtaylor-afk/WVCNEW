@@ -1,0 +1,22 @@
+{
+  "name": "WV Construction — Smart Quote Generator",
+  "short_name": "WVC Quotes",
+  "description": "Professional construction quote generator with AI-powered room visualisation",
+  "start_url": "/quotes/new",
+  "display": "standalone",
+  "background_color": "#0B1F3A",
+  "theme_color": "#0B1F3A",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
