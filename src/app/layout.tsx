@@ -4,13 +4,14 @@ import { Toaster } from "sonner";
 import { QueryProvider } from "@/components/providers/QueryProvider";
 
 export const metadata: Metadata = {
-  title: "WV Construction — Smart Quote Generator",
-  description: "Professional construction quote generator with AI-powered room visualisation",
+  title: "WV Construction LTD — Building Excellence Across the Wirral",
+  description:
+    "WV Construction LTD delivers exceptional building and maintenance services across the Wirral Peninsula. Full renovations, extensions, roofing, brickwork and more.",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "WVC Quotes",
+    title: "WV Construction",
   },
 };
 
@@ -18,7 +19,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#0B1F3A",
+  themeColor: "#1D1D1F",
 };
 
 export default function RootLayout({
@@ -30,10 +31,14 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Syne:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Syne:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap"
           rel="stylesheet"
         />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -48,7 +53,7 @@ export default function RootLayout({
           href="/apple-touch-icon.png"
         />
       </head>
-      <body className="bg-navy antialiased">
+      <body className="antialiased">
         <QueryProvider>
           {children}
           <Toaster

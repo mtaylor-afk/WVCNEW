@@ -10,6 +10,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // WV Marketing design system (Apple-inspired)
+        "wv-white": "#FFFFFF",
+        "wv-surface": "#F5F5F7",
+        "wv-dark": "#1D1D1F",
+        "wv-text": "#1D1D1F",
+        "wv-secondary": "#6E6E73",
+        "wv-tertiary": "#86868B",
+        "wv-gold": "#B8975A",
+        "wv-gold-light": "#D4AF78",
+        "wv-border": "#D2D2D7",
         navy: {
           DEFAULT: "#0B1F3A",
           50: "#E8EDF4",
@@ -47,6 +57,8 @@ const config: Config = {
         },
       },
       fontFamily: {
+        inter: ["Inter", "system-ui", "sans-serif"],
+        playfair: ["Playfair Display", "Georgia", "serif"],
         cormorant: ["var(--font-cormorant)", "Georgia", "serif"],
         syne: ["var(--font-syne)", "system-ui", "sans-serif"],
         mono: ["var(--font-dm-mono)", "monospace"],
@@ -55,10 +67,13 @@ const config: Config = {
         lg: "12px",
         xl: "16px",
         "2xl": "20px",
+        card: "18px",
+        pill: "980px",
       },
       boxShadow: {
-        card: "0 2px 20px rgba(11, 31, 58, 0.08)",
-        "card-hover": "0 8px 40px rgba(11, 31, 58, 0.15)",
+        card: "0 2px 20px rgba(0,0,0,0.08)",
+        "card-hover": "0 8px 40px rgba(0,0,0,0.1)",
+        "card-navy": "0 2px 20px rgba(11, 31, 58, 0.08)",
         gold: "0 0 20px rgba(201, 168, 76, 0.3)",
       },
       animation: {
@@ -68,6 +83,7 @@ const config: Config = {
         "fade-in": "fadeIn 0.2s ease-out",
         "scale-in": "scaleIn 0.2s ease-out",
         pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        marquee: "marquee 35s linear infinite",
       },
       keyframes: {
         shimmer: {
@@ -89,6 +105,10 @@ const config: Config = {
         scaleIn: {
           "0%": { transform: "scale(0.95)", opacity: "0" },
           "100%": { transform: "scale(1)", opacity: "1" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
     },

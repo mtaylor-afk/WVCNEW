@@ -243,3 +243,132 @@ input[type="number"] {
   transform-origin: top left;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
+
+/* =====================================================
+   MARKETING SITE STYLES
+   ===================================================== */
+
+/* Marketing page reset */
+.marketing-page {
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+/* Marketing floating label */
+.mkt-field {
+  position: relative;
+}
+
+.mkt-field input,
+.mkt-field select,
+.mkt-field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #D2D2D7;
+  padding: 20px 0 8px 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  color: #1D1D1F;
+  outline: none;
+  transition: border-color 0.25s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.mkt-field textarea {
+  min-height: 140px;
+  resize: none;
+}
+
+.mkt-field select {
+  cursor: pointer;
+}
+
+.mkt-field label {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  color: #6E6E73;
+  transition: all 0.25s ease;
+  pointer-events: none;
+}
+
+.mkt-field input:focus ~ label,
+.mkt-field input:not(:placeholder-shown) ~ label,
+.mkt-field select:focus ~ label,
+.mkt-field select:not([value=""]) ~ label,
+.mkt-field textarea:focus ~ label,
+.mkt-field textarea:not(:placeholder-shown) ~ label {
+  top: 2px;
+  font-size: 11px;
+  color: #B8975A;
+  letter-spacing: 0.05em;
+}
+
+.mkt-field input:focus,
+.mkt-field select:focus,
+.mkt-field textarea:focus {
+  border-bottom: 2px solid #B8975A;
+}
+
+.mkt-field.has-value label,
+.mkt-field.is-focused label {
+  top: 2px;
+  font-size: 11px;
+  color: #B8975A;
+  letter-spacing: 0.05em;
+}
+
+/* Marquee strip */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+/* Hide scrollbar for testimonial carousel */
+.testimonial-scroll::-webkit-scrollbar {
+  display: none;
+}
+.testimonial-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* SVG draw animation */
+@keyframes svgDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.svg-draw {
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+  animation: svgDraw 2.5s ease forwards;
+}
+
+.svg-draw-delay-1 { animation-delay: 0.3s; }
+.svg-draw-delay-2 { animation-delay: 0.6s; }
+.svg-draw-delay-3 { animation-delay: 0.9s; }
+.svg-draw-delay-4 { animation-delay: 1.2s; }
+.svg-draw-delay-5 { animation-delay: 1.5s; }
+
+/* Process line animation */
+.process-line-animated {
+  transition: width 1.5s ease;
+}
+
+/* Marketing smooth scrolling */
+html:has(.marketing-page) {
+  scroll-behavior: smooth;
+}
+
+body:has(.marketing-page) {
+  overflow: auto;
+  overscroll-behavior: auto;
+  background: #ffffff;
+}
