@@ -51,6 +51,17 @@ export const siteData = {
         icon: "Home",
         description:
           "Complete home transformations from structural work to finishing touches. We manage every trade, every detail, every step of the way.",
+        hero: "Complete home transformations, managed end-to-end.",
+        detail:
+          "A full renovation is one of the most significant investments you can make in your property. WV Construction takes ownership of the entire project — coordinating every trade, managing every timeline, and ensuring every detail is finished to the highest standard. From strip-out through to decoration, we're with you at every step.",
+        features: [
+          "Full project management from first visit to final handover",
+          "All trades coordinated by us — no juggling contractors",
+          "Structural, electrical, plumbing, plastering and decoration",
+          "Fixed price — what we quote is what you pay",
+          "Daily site tidiness and regular progress updates",
+          "Workmanship guarantee on all completed work",
+        ],
       },
       {
         id: "extensions",
@@ -58,6 +69,17 @@ export const siteData = {
         icon: "Maximize2",
         description:
           "Thoughtfully designed extensions that blend seamlessly with your existing property. Structural expertise with an eye for proportion.",
+        hero: "Intelligent extensions that increase space, value, and livability.",
+        detail:
+          "Adding space to your home should feel seamless — as though it was always there. Our extensions and loft conversions are structurally sound, beautifully finished, and designed to complement your existing property. We handle everything from foundations to final coat, including guidance on planning requirements.",
+        features: [
+          "Single and double storey rear and side extensions",
+          "Full and partial loft conversions with Velux or dormer options",
+          "Structural calculations and planning application guidance",
+          "Foundations, brickwork and roof integration",
+          "All internal trades: electrical, plumbing, plastering",
+          "Insulated to current building regulations standards",
+        ],
       },
       {
         id: "maintenance",
@@ -65,6 +87,17 @@ export const siteData = {
         icon: "Wrench",
         description:
           "Ongoing maintenance contracts and one-off repairs. We keep properties in exceptional condition, proactively and efficiently.",
+        hero: "Keep your property in exceptional condition, always.",
+        detail:
+          "Whether you own a single home or a portfolio of rental properties, WV Construction provides reliable maintenance services that keep everything running smoothly. We respond fast, work cleanly, and carry out every job — large or small — to the same high standard. Ideal for landlords, estate managers, and homeowners alike.",
+        features: [
+          "Rolling monthly maintenance contracts available",
+          "Emergency call-out response for urgent repairs",
+          "Planned preventative maintenance programmes",
+          "General repairs: plastering, tiling, joinery, painting",
+          "Landlord compliance works and condition surveys",
+          "Trusted by multiple Wirral landlords and letting agents",
+        ],
       },
       {
         id: "roofing",
@@ -72,6 +105,17 @@ export const siteData = {
         icon: "Triangle",
         description:
           "Flat roofs, pitched roofs, re-roofing, and repairs. Fully certified, guaranteed workmanship on every roofing project.",
+        hero: "Fully certified roofing, guaranteed to last.",
+        detail:
+          "Your roof is your home's first line of defence. WV Construction carries out all roofing work to the highest standard, using quality materials and proven techniques. Every project is completed by experienced roofers and backed by a workmanship guarantee — whether it's a minor repair or a full re-roof.",
+        features: [
+          "Pitched roof installation, re-roofing and repairs",
+          "Flat roof installation using EPDM and GRP systems",
+          "New felt, battens, and natural or concrete slates",
+          "Ridge repointing and hip tile re-bedding",
+          "Guttering, fascias, soffits and downpipe installation",
+          "Full workmanship guarantee on all roofing projects",
+        ],
       },
       {
         id: "kitchens",
@@ -79,6 +123,17 @@ export const siteData = {
         icon: "LayoutGrid",
         description:
           "High-specification kitchen and bathroom installations. Supply and fit, or fit-only — exactly as you need it.",
+        hero: "High-specification kitchens and bathrooms, fitted to perfection.",
+        detail:
+          "A well-fitted kitchen or bathroom transforms daily life. WV Construction installs to a meticulous standard — every unit level, every tile perfect, every fixture properly seated. We work with your chosen supplier or can source units, sanitaryware and appliances on your behalf. The result is a space that functions flawlessly and looks exceptional.",
+        features: [
+          "Full kitchen installation including supply-and-fit option",
+          "Bathroom and en-suite fitting to full specification",
+          "All associated plumbing and electrical first and second fix",
+          "Floor and wall tiling with precision layout and grouting",
+          "Bespoke storage and cabinetry solutions",
+          "Luxury finishes and premium fixture options available",
+        ],
       },
       {
         id: "brickwork",
@@ -86,6 +141,17 @@ export const siteData = {
         icon: "Layers",
         description:
           "Expert brickwork, repointing, and rendering services. Clean lines, solid construction, beautiful results.",
+        hero: "Expert masonry that stands the test of time.",
+        detail:
+          "Good brickwork and rendering is both structural and decorative — it needs to be built correctly and look beautiful. Our experienced masons deliver clean lines, accurate coursing, and durable finishes on every job. From new-build blockwork to heritage repointing, we bring the same level of craft to every project.",
+        features: [
+          "New brickwork and blockwork construction",
+          "Repointing of existing brickwork in matching mortars",
+          "Sand and cement render application and repairs",
+          "Silicone through-colour render systems",
+          "Garden walls, boundary structures and pillars",
+          "Decorative stonework and architectural detailing",
+        ],
       },
     ],
   },

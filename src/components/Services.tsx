@@ -9,6 +9,7 @@ import {
   LayoutGrid,
   Layers,
 } from "lucide-react";
+import Link from "next/link";
 import { siteData } from "@/lib/data";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -148,7 +149,7 @@ function ServiceCard({
   index,
   borderRadius,
 }: {
-  service: { name: string; description: string };
+  service: { id: string; name: string; description: string };
   Icon: React.ElementType;
   index: number;
   borderRadius: string;
@@ -169,6 +170,8 @@ function ServiceCard({
         cursor: "default",
         boxShadow: "0 2px 20px rgba(0,0,0,0.04)",
         transition: "all 0.4s cubic-bezier(0.25,0.1,0.25,1)",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <Icon
@@ -198,21 +201,27 @@ function ServiceCard({
           color: "#6E6E73",
           lineHeight: 1.6,
           marginBottom: "24px",
+          flex: 1,
         }}
       >
         {service.description}
       </p>
-      <span
+      <Link
+        href={`/services/${service.id}`}
         style={{
           fontFamily: "'Inter', system-ui, sans-serif",
           fontWeight: 500,
           fontSize: "14px",
           color: "#B8975A",
-          cursor: "pointer",
+          textDecoration: "none",
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "4px",
+          transition: "gap 0.2s ease",
         }}
       >
         Learn more →
-      </span>
+      </Link>
     </motion.div>
   );
 }
