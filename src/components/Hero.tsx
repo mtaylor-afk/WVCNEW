@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { siteData } from "@/lib/data";
-import { BuildingIllustration } from "@/components/illustrations/BuildingIllustration";
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 30 },
@@ -168,7 +168,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Building Illustration */}
+      {/* Hero Image */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -180,7 +180,23 @@ export default function Hero() {
           padding: "0 24px",
         }}
       >
-        <BuildingIllustration />
+        <div
+          style={{
+            borderRadius: "18px",
+            overflow: "hidden",
+            boxShadow: "0 24px 80px rgba(0,0,0,0.12)",
+            lineHeight: 0,
+          }}
+        >
+          <Image
+            src="/assets/hero-house.jpg"
+            alt="From architectural design to completed home — WV Construction"
+            width={1120}
+            height={720}
+            priority
+            style={{ width: "100%", height: "auto", display: "block" }}
+          />
+        </div>
       </motion.div>
 
       {/* Divider */}
