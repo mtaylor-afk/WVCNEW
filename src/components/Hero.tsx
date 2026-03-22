@@ -189,7 +189,7 @@ export default function Hero() {
           }}
         >
           <Image
-            src="/assets/hero-house.jpg"
+            src="/assets/hero-house.png"
             alt="From architectural design to completed home — WV Construction"
             width={1120}
             height={720}
