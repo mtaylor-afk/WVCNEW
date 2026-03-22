@@ -46,14 +46,14 @@ export default function ServicePageClient({ service }: { service: ServiceItem })
     html.style.overflow = "auto";
     body.style.height = "auto";
     body.style.overflow = "auto";
-    body.style.webkitOverflowScrolling = "touch";
+    body.style.setProperty("-webkit-overflow-scrolling", "touch");
 
     return () => {
       html.style.height = prevHtmlHeight;
       html.style.overflow = prevHtmlOverflow;
       body.style.height = prevBodyHeight;
       body.style.overflow = prevBodyOverflow;
-      body.style.webkitOverflowScrolling = "";
+      body.style.removeProperty("-webkit-overflow-scrolling");
     };
   }, []);
 
