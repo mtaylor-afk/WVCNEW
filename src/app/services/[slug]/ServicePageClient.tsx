@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
@@ -34,31 +33,8 @@ const fadeUp = {
 export default function ServicePageClient({ service }: { service: ServiceItem }) {
   const Icon = iconMap[service.icon] ?? Home;
 
-  useEffect(() => {
-    const html = document.documentElement;
-    const body = document.body;
-    const prevBodyOverflow = body.style.overflow;
-    const prevBodyHeight = body.style.height;
-    const prevHtmlOverflow = html.style.overflow;
-    const prevHtmlHeight = html.style.height;
-
-    html.style.height = "auto";
-    html.style.overflow = "auto";
-    body.style.height = "auto";
-    body.style.overflow = "auto";
-    body.style.setProperty("-webkit-overflow-scrolling", "touch");
-
-    return () => {
-      html.style.height = prevHtmlHeight;
-      html.style.overflow = prevHtmlOverflow;
-      body.style.height = prevBodyHeight;
-      body.style.overflow = prevBodyOverflow;
-      body.style.removeProperty("-webkit-overflow-scrolling");
-    };
-  }, []);
-
   return (
-    <div style={{ backgroundColor: "#FFFFFF", minHeight: "100vh" }}>
+    <div className="service-page" style={{ backgroundColor: "#FFFFFF", minHeight: "100vh" }}>
       {/* Navbar */}
       <header
         style={{

@@ -372,3 +372,17 @@ body:has(.marketing-page) {
   overscroll-behavior: auto;
   background: #ffffff;
 }
+
+/* Service page scrolling */
+html:has(.service-page) {
+  height: auto;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+
+body:has(.service-page) {
+  height: auto;
+  overflow: auto;
+  overscroll-behavior: auto;
+  touch-action: pan-y;
+}
