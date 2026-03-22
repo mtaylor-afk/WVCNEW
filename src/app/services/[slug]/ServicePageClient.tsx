@@ -35,15 +35,25 @@ export default function ServicePageClient({ service }: { service: ServiceItem })
   const Icon = iconMap[service.icon] ?? Home;
 
   useEffect(() => {
-    const prevOverflow = document.body.style.overflow;
-    const prevHtmlOverflow = document.documentElement.style.overflow;
-    document.body.style.overflow = "auto";
-    document.body.style.webkitOverflowScrolling = "touch";
-    document.documentElement.style.overflow = "auto";
+    const html = document.documentElement;
+    const body = document.body;
+    const prevBodyOverflow = body.style.overflow;
+    const prevBodyHeight = body.style.height;
+    const prevHtmlOverflow = html.style.overflow;
+    const prevHtmlHeight = html.style.height;
+
+    html.style.height = "auto";
+    html.style.overflow = "auto";
+    body.style.height = "auto";
+    body.style.overflow = "auto";
+    body.style.webkitOverflowScrolling = "touch";
+
     return () => {
-      document.body.style.overflow = prevOverflow;
-      document.body.style.webkitOverflowScrolling = "";
-      document.documentElement.style.overflow = prevHtmlOverflow;
+      html.style.height = prevHtmlHeight;
+      html.style.overflow = prevHtmlOverflow;
+      body.style.height = prevBodyHeight;
+      body.style.overflow = prevBodyOverflow;
+      body.style.webkitOverflowScrolling = "";
     };
   }, []);
 
