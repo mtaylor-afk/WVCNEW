@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
@@ -32,6 +33,19 @@ const fadeUp = {
 
 export default function ServicePageClient({ service }: { service: ServiceItem }) {
   const Icon = iconMap[service.icon] ?? Home;
+
+  useEffect(() => {
+    const prevOverflow = document.body.style.overflow;
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "auto";
+    document.body.style.webkitOverflowScrolling = "touch";
+    document.documentElement.style.overflow = "auto";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      document.body.style.webkitOverflowScrolling = "";
+      document.documentElement.style.overflow = prevHtmlOverflow;
+    };
+  }, []);
 
   return (
     <div style={{ backgroundColor: "#FFFFFF", minHeight: "100vh" }}>
