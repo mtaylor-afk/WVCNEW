@@ -313,7 +313,6 @@ export const siteData = {
     copyright:
       "© 2024 WV Construction LTD · All rights reserved · Wallasey, Wirral",
   },
-};
 
   ourWork: {
     label: "Our Work",
