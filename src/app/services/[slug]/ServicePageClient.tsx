@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
@@ -34,31 +33,8 @@ const fadeUp = {
 export default function ServicePageClient({ service }: { service: ServiceItem }) {
   const Icon = iconMap[service.icon] ?? Home;
 
-  useEffect(() => {
-    const html = document.documentElement;
-    const body = document.body;
-    const prevBodyOverflow = body.style.overflow;
-    const prevBodyHeight = body.style.height;
-    const prevHtmlOverflow = html.style.overflow;
-    const prevHtmlHeight = html.style.height;
-
-    html.style.height = "auto";
-    html.style.overflow = "auto";
-    body.style.height = "auto";
-    body.style.overflow = "auto";
-    body.style.webkitOverflowScrolling = "touch";
-
-    return () => {
-      html.style.height = prevHtmlHeight;
-      html.style.overflow = prevHtmlOverflow;
-      body.style.height = prevBodyHeight;
-      body.style.overflow = prevBodyOverflow;
-      body.style.webkitOverflowScrolling = "";
-    };
-  }, []);
-
   return (
-    <div style={{ backgroundColor: "#FFFFFF", minHeight: "100vh" }}>
+    <div className="service-page" style={{ backgroundColor: "#FFFFFF", minHeight: "100vh" }}>
       {/* Navbar */}
       <header
         style={{
@@ -133,6 +109,19 @@ export default function ServicePageClient({ service }: { service: ServiceItem })
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/our-work"
+              style={{
+                fontFamily: "'Inter', system-ui, sans-serif",
+                fontWeight: 400,
+                fontSize: "14px",
+                color: "#1D1D1F",
+                textDecoration: "none",
+                opacity: 0.75,
+              }}
+            >
+              Our Work
+            </Link>
           </nav>
 
           <Link

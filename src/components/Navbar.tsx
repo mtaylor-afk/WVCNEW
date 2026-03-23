@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Menu } from "lucide-react";
+import Link from "next/link";
 import { siteData } from "@/lib/data";
 
 const SECTION_IDS = ["services", "why-us", "testimonials", "process", "contact"];
@@ -157,6 +158,29 @@ export default function Navbar() {
                 </a>
               );
             })}
+            {/* Our Work — page route, not a scroll anchor */}
+            <Link
+              href="/our-work"
+              style={{
+                fontFamily: "'Inter', system-ui, sans-serif",
+                fontWeight: 400,
+                fontSize: "14px",
+                color: "#1D1D1F",
+                textDecoration: "none",
+                transition: "color 0.2s ease",
+                opacity: 0.75,
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.color = "#B8975A";
+                (e.currentTarget as HTMLAnchorElement).style.opacity = "1";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.color = "#1D1D1F";
+                (e.currentTarget as HTMLAnchorElement).style.opacity = "0.75";
+              }}
+            >
+              Our Work
+            </Link>
           </nav>
 
           {/* Right: CTA + hamburger */}
@@ -271,6 +295,29 @@ export default function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
+              {/* Our Work — page route */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: siteData.nav.links.length * 0.08, duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+              >
+                <Link
+                  href="/our-work"
+                  onClick={() => setMobileOpen(false)}
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 600,
+                    fontSize: "40px",
+                    color: "#B8975A",
+                    textDecoration: "none",
+                    lineHeight: 1.2,
+                    letterSpacing: "-0.02em",
+                    display: "block",
+                  }}
+                >
+                  Our Work
+                </Link>
+              </motion.div>
             </nav>
 
             {/* Mobile CTA */}

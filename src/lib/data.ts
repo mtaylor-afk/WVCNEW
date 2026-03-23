@@ -313,9 +313,209 @@ export const siteData = {
     copyright:
       "© 2024 WV Construction LTD · All rights reserved · Wallasey, Wirral",
   },
+
+  ourWork: {
+    label: "Our Work",
+    headline: ["Completed Projects", "Across the Wirral."],
+    subheadline:
+      "Every project below is an example of the type of work we carry out for homeowners across the Wirral Peninsula. Real trades, real results, and an honest account of what each job involved.",
+    cta: {
+      primary: "Request a Quote",
+      secondary: "Speak to Us",
+    },
+    trustIntro: {
+      heading: "Real projects. Real homeowners. Real results.",
+      body: "We know that choosing a builder is a significant decision, and that most homeowners want to see genuine examples of completed work before they pick up the phone. Below you'll find one realistic example for each of the services we offer — drawn from our experience working with homeowners across the Wirral.",
+      sub: "WV Construction manages every project from the initial consultation through to final sign-off, coordinating all required trades and keeping you informed at every stage of the build.",
+    },
+    projects: [
+      {
+        id: "renovation-wallasey",
+        serviceId: "renovations",
+        serviceLabel: "Full Renovation",
+        title: "Victorian Terrace Full Renovation",
+        location: "Wallasey",
+        overview:
+          "A complete internal renovation of a three-bedroom Victorian terrace, stripped back to brick and rebuilt to a modern specification whilst retaining the character of the original property.",
+        challenge:
+          "The property had not been seriously touched in over thirty years. The electrics were outdated and failing, the plumbing had corroded in several areas, all internal plasterwork needed stripping and replacing, and the kitchen and bathroom were well past the point of repair. The owners wanted a fully managed renovation without the stress of coordinating multiple contractors themselves.",
+        solution:
+          "WV Construction managed the project end-to-end: full rewire with new consumer unit, new first-fix plumbing throughout, all walls hacked back and re-skimmed, new kitchen supply and installation, new bathroom suite, engineered oak flooring to the ground floor, and full redecoration throughout.",
+        result:
+          "A completely transformed family home delivered on time and exactly on budget. The owners described the finished result as feeling like a different house. The property was revalued significantly higher following completion.",
+        included: [
+          "Full electrical rewire with new consumer unit",
+          "Complete first and second fix plumbing",
+          "Full internal re-plaster throughout",
+          "New kitchen supply and installation",
+          "New bathroom suite supply and installation",
+          "Engineered oak flooring, ground floor",
+          "Full internal redecoration",
+          "Project management from day one to handover",
+        ],
+        tags: ["Full Renovation", "Victorian Terrace", "Wallasey"],
+        imageAlt: "Renovated Victorian terrace interior, Wallasey",
+        imageSrc: "/assets/01_victorian-terrace-full-renovation-wallasey.png",
+        imageBg: "linear-gradient(150deg, #2A2A2C 0%, #3C3C3E 60%, #2A2A2C 100%)",
+      },
+      {
+        id: "extension-heswall",
+        serviceId: "extensions",
+        serviceLabel: "Extensions & Loft Conversions",
+        title: "Single-Storey Rear Extension",
+        location: "Heswall",
+        overview:
+          "A single-storey rear extension creating an open-plan kitchen-dining space for a young family, with a flat EPDM roof, bi-fold doors to the garden, and a fully glazed roof lantern.",
+        challenge:
+          "The existing rear kitchen was small, poorly laid out, and disconnected from the garden. The owners wanted to open up the back of the house substantially, create a proper kitchen-diner, and bring in significantly more natural light — without pushing the footprint further than planning would comfortably allow.",
+        solution:
+          "We designed and built a 4m by 5m rear extension with a flat EPDM roof, a central glazed roof lantern, and full-width bi-fold doors to the garden. Structurally, the existing rear wall was partially removed and an RSJ installed. The extension was insulated to current building regulation standards and all internal finishes were matched to the existing property.",
+        result:
+          "A generous, light-filled kitchen-diner that transformed daily family life. The extension added meaningful floor space and noticeably improved the property's value and appeal.",
+        included: [
+          "Planning application guidance and structural drawings",
+          "Foundations, blockwork and facing brickwork",
+          "Flat EPDM roof with central glazed roof lantern",
+          "Bi-fold door supply and installation",
+          "Internal structural opening with RSJ",
+          "Electrical and plumbing first and second fix",
+          "Plastering, flooring and full decoration",
+          "Building regulations sign-off",
+        ],
+        tags: ["Rear Extension", "Open-Plan Kitchen", "Heswall"],
+        imageAlt: "Single-storey rear extension with roof lantern, Heswall",
+        imageSrc: "/assets/02_single-storey-rear-kitchen-extension-heswall.png",
+        imageBg: "linear-gradient(150deg, #1E1E20 0%, #2C2C2E 60%, #1E1E20 100%)",
+      },
+      {
+        id: "maintenance-birkenhead",
+        serviceId: "maintenance",
+        serviceLabel: "Building Maintenance",
+        title: "Landlord Maintenance Contract",
+        location: "Birkenhead",
+        overview:
+          "An ongoing rolling maintenance contract for a portfolio of six residential rental properties in Birkenhead, covering both planned preventative maintenance and reactive repairs throughout the year.",
+        challenge:
+          "The landlord had been managing repairs through a series of uncoordinated tradespeople, resulting in inconsistent quality, delayed responses, and frustrated tenants. They needed a single reliable contractor to take full ownership of all maintenance across the portfolio.",
+        solution:
+          "WV Construction took on a rolling monthly contract covering all maintenance across the portfolio. This includes quarterly inspection visits, a fast response to tenant repair requests, and a schedule of planned works to keep all six properties in good lettable condition throughout the year.",
+        result:
+          "Tenant satisfaction improved, void periods reduced as properties are returned to lettable condition faster, and the landlord stepped back from day-to-day management entirely. All work is invoiced clearly on a monthly basis.",
+        included: [
+          "Quarterly property inspections across all six units",
+          "Rapid reactive response to tenant repair requests",
+          "Plastering, joinery, tiling and painting repairs",
+          "Bathroom and kitchen remedial works",
+          "External maintenance: gutters, pointing, paintwork",
+          "End-of-tenancy condition reinstatement works",
+          "Monthly itemised invoice and written report",
+        ],
+        tags: ["Maintenance Contract", "Rental Portfolio", "Birkenhead"],
+        imageAlt: "Rental property maintenance and repair work, Birkenhead",
+        imageSrc: "/assets/03_landlord-maintenance-contract-rental-properties-birkenhead.png",
+        imageBg: "linear-gradient(150deg, #2A2A2C 0%, #383838 60%, #2A2A2C 100%)",
+      },
+      {
+        id: "roofing-west-kirby",
+        serviceId: "roofing",
+        serviceLabel: "Roofing",
+        title: "Full Re-Roof — Detached Property",
+        location: "West Kirby",
+        overview:
+          "A complete re-roof of a four-bedroom detached property, stripping existing worn tiles and deteriorated felt and reinstating with new breathable felt, treated battens, and natural Welsh slate throughout.",
+        challenge:
+          "The existing roof was over forty years old. Slates were slipping and cracking across multiple elevations, the underlying felt had failed in several areas, and the ridge had shifted. The property was showing signs of water ingress, particularly around the chimney stacks.",
+        solution:
+          "A full strip and re-roof was carried out: new breathable felt laid, new treated timber battens, natural Welsh slate installed throughout, new lead flashing formed around both chimney stacks, the ridge repointed, and all hip tiles re-bedded in fresh mortar.",
+        result:
+          "A watertight, beautifully finished roof with a natural slate appearance well suited to the character of the property. A full workmanship guarantee was issued and the owners have had no further issues.",
+        included: [
+          "Full strip of existing slates, felt and battens",
+          "New breathable roofing felt throughout",
+          "New treated timber battens",
+          "Natural Welsh slate installation",
+          "Lead flashing to both chimney stacks",
+          "Ridge repointing and hip tile re-bedding",
+          "Guttering inspection and downpipe replacement",
+          "Full workmanship guarantee",
+        ],
+        tags: ["Full Re-Roof", "Natural Welsh Slate", "West Kirby"],
+        imageAlt: "Full re-roof with natural Welsh slate, West Kirby",
+        imageSrc: "/assets/04_detached-property-full-re-roof-west-kirby.png",
+        imageBg: "linear-gradient(150deg, #1E1E20 0%, #2C2C2E 60%, #1E1E20 100%)",
+      },
+      {
+        id: "kitchen-bathroom-bebington",
+        serviceId: "kitchens",
+        serviceLabel: "Kitchen & Bathroom Fitting",
+        title: "Kitchen Replacement & En-Suite Installation",
+        location: "Bebington",
+        overview:
+          "A full kitchen replacement and new en-suite installation in a semi-detached property — supply and fit on the kitchen, fit-only on the en-suite, with all associated plumbing, electrical and tiling works carried out by our team.",
+        challenge:
+          "The existing kitchen was poorly laid out, low quality, and well overdue for replacement. The master bedroom had the footprint for an en-suite but had never been converted. The owners wanted both projects completed simultaneously to minimise disruption and achieve a consistent finish throughout.",
+        solution:
+          "The old kitchen was stripped and a new layout planned to improve workflow and worktop space. A full new kitchen was supplied and installed with integrated appliances. In parallel, the en-suite was built from the bedroom space — stud walling, full waterproofing and tanking, large-format floor and wall tiling, sanitaryware installation, and all associated plumbing and electrical.",
+        result:
+          "Two fully completed, beautifully finished rooms delivered within a three-week programme. The kitchen is now the centrepiece of the ground floor and the en-suite has been a genuine quality-of-life improvement for the family.",
+        included: [
+          "Kitchen design consultation and full supply",
+          "Full kitchen strip-out and installation",
+          "Integrated appliance connection",
+          "En-suite stud wall and doorway formation",
+          "Full waterproofing and tanking",
+          "Large-format floor and wall tiling",
+          "Sanitaryware and heated towel rail installation",
+          "All associated plumbing and electrical works",
+        ],
+        tags: ["Kitchen Fitting", "En-Suite", "Bebington"],
+        imageAlt: "New kitchen and en-suite fitting, Bebington",
+        imageSrc: "/assets/05_kitchen-replacement-with-en-suite-installation-bebington.png",
+        imageBg: "linear-gradient(150deg, #2A2A2C 0%, #383838 60%, #2A2A2C 100%)",
+      },
+      {
+        id: "brickwork-hoylake",
+        serviceId: "brickwork",
+        serviceLabel: "Brickwork & Rendering",
+        title: "Full External Re-Render",
+        location: "Hoylake",
+        overview:
+          "Complete removal of the original failed sand and cement render from a 1930s semi-detached property, followed by application of a modern silicone through-colour render system — transforming the external appearance of the property.",
+        challenge:
+          "The original render had reached the end of its useful life: cracked in multiple areas, stained, and no longer weathertight. Isolated patch repairs had been attempted twice and failed each time. The only long-term solution was a full strip and re-render.",
+        solution:
+          "All existing render was hacked off back to the original brickwork. The substrate was inspected and minor brick repairs were carried out before a basecoat was applied. A through-colour silicone render system was then applied to all elevations. Silicone render is flexible, breathable, and self-cleaning, requiring no future painting.",
+        result:
+          "A completely rejuvenated exterior that the owners described as looking like a new house. The silicone system is guaranteed and maintenance-free, making it a sound long-term investment.",
+        included: [
+          "Scaffold erection and dismantling",
+          "Full strip of existing render to brickwork",
+          "Brick inspection, repair and substrate preparation",
+          "Application of bonding slurry coat",
+          "Silicone through-colour basecoat",
+          "Silicone through-colour finish coat",
+          "Window and door bead and detail formation",
+          "External sill reinstatement",
+        ],
+        tags: ["External Render", "Silicone System", "Hoylake"],
+        imageAlt: "Full external re-render in silicone system, Hoylake",
+        imageSrc: "/assets/06_full-silicone-external-re-render-hoylake.png",
+        imageBg: "linear-gradient(150deg, #1E1E20 0%, #2C2C2E 60%, #1E1E20 100%)",
+      },
+    ],
+    verifiedReviews: {
+      platform: "MyBuilder",
+      url: "https://www.mybuilder.com/",
+      claim:
+        "Our reviews on MyBuilder are independently posted by homeowners after work is completed and verified by the platform — we don't select which reviews appear or moderate what is written.",
+      cta: "View our reviews on MyBuilder",
+      note: "MyBuilder is a third-party platform. Reviews are posted and hosted independently.",
+    },
+  },
 };
 
 export type SiteData = typeof siteData;
 export type ServiceItem = (typeof siteData.services.items)[number];
 export type Review = (typeof siteData.testimonials.reviews)[number];
 export type ProcessStep = (typeof siteData.process.steps)[number];
+export type OurWorkProject = (typeof siteData.ourWork.projects)[number];

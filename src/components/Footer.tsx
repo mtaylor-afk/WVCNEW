@@ -1,6 +1,7 @@
 "use client";
 
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, ExternalLink } from "lucide-react";
+import Link from "next/link";
 import { siteData } from "@/lib/data";
 
 export default function Footer() {
@@ -181,8 +182,78 @@ export default function Footer() {
                     </a>
                   </li>
                 ))}
+                {/* Our Work — standalone page */}
+                <li>
+                  <Link
+                    href="/our-work"
+                    style={{
+                      fontFamily: "'Inter', system-ui, sans-serif",
+                      fontWeight: 500,
+                      fontSize: "14px",
+                      color: "rgba(184,151,90,0.75)",
+                      textDecoration: "none",
+                      transition: "color 0.2s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLAnchorElement).style.color = "#B8975A";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLAnchorElement).style.color = "rgba(184,151,90,0.75)";
+                    }}
+                  >
+                    Our Work
+                  </Link>
+                </li>
               </ul>
             </nav>
+
+            {/* Compact verified reviews trust line */}
+            <div
+              style={{
+                marginTop: "28px",
+                paddingTop: "20px",
+                borderTop: "1px solid rgba(255,255,255,0.06)",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "'Inter', system-ui, sans-serif",
+                  fontWeight: 400,
+                  fontSize: "12px",
+                  color: "rgba(255,255,255,0.25)",
+                  lineHeight: 1.5,
+                  marginBottom: "8px",
+                }}
+              >
+                Reviews independently verified on
+              </p>
+              <a
+                href={siteData.ourWork.verifiedReviews.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View WV Construction reviews on MyBuilder (opens in a new tab)"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  fontFamily: "'Inter', system-ui, sans-serif",
+                  fontWeight: 500,
+                  fontSize: "12px",
+                  color: "rgba(184,151,90,0.6)",
+                  textDecoration: "none",
+                  transition: "color 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#B8975A";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.color = "rgba(184,151,90,0.6)";
+                }}
+              >
+                {siteData.ourWork.verifiedReviews.platform}
+                <ExternalLink size={10} aria-hidden="true" />
+              </a>
+            </div>
           </div>
 
           {/* Col 3 — Company info */}
