@@ -109,6 +109,19 @@ export default function ServicePageClient({ service }: { service: ServiceItem })
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/our-work"
+              style={{
+                fontFamily: "'Inter', system-ui, sans-serif",
+                fontWeight: 400,
+                fontSize: "14px",
+                color: "#1D1D1F",
+                textDecoration: "none",
+                opacity: 0.75,
+              }}
+            >
+              Our Work
+            </Link>
           </nav>
 
           <Link
