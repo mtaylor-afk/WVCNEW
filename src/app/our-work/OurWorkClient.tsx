@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Phone, ExternalLink, CheckCircle2, MapPin, Tag } from "lucide-react";
 import { siteData } from "@/lib/data";
@@ -11,16 +12,43 @@ const fadeUp = {
   transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const },
 };
 
-// Placeholder image: premium dark gradient with a centred label — easy to replace with real photos later.
-function ProjectImagePlaceholder({
-  bg,
+function ProjectImage({
+  src,
   alt,
+  bg,
   index,
 }: {
-  bg: string;
+  src?: string;
   alt: string;
+  bg: string;
   index: number;
 }) {
+  if (src) {
+    return (
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          paddingBottom: "62%",
+          borderRadius: "16px",
+          overflow: "hidden",
+          flexShrink: 0,
+          backgroundColor: "#1E1E20",
+        }}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          style={{ objectFit: "cover" }}
+          sizes="(max-width: 860px) 100vw, 50vw"
+          priority={index < 2}
+        />
+      </div>
+    );
+  }
+
+  // Fallback placeholder when no image is available
   return (
     <div
       style={{
@@ -35,17 +63,6 @@ function ProjectImagePlaceholder({
       role="img"
       aria-label={alt}
     >
-      {/* Subtle grid texture */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage:
-            "repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,0.025) 39px,rgba(255,255,255,0.025) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,0.025) 39px,rgba(255,255,255,0.025) 40px)",
-        }}
-      />
-      {/* WV watermark */}
       <div
         aria-hidden="true"
         style={{
@@ -85,7 +102,6 @@ function ProjectImagePlaceholder({
           Photo coming soon
         </span>
       </div>
-      {/* Project number badge */}
       <div
         aria-hidden="true"
         style={{
@@ -137,9 +153,10 @@ function ProjectCard({
         style={{ order: isEven ? 0 : 1 }}
         className="project-image-col"
       >
-        <ProjectImagePlaceholder
-          bg={project.imageBg}
+        <ProjectImage
+          src={project.imageSrc}
           alt={project.imageAlt}
+          bg={project.imageBg}
           index={index}
         />
         {/* Tags below image */}

@@ -355,6 +355,7 @@ export const siteData = {
         ],
         tags: ["Full Renovation", "Victorian Terrace", "Wallasey"],
         imageAlt: "Renovated Victorian terrace interior, Wallasey",
+        imageSrc: "/assets/01_victorian-terrace-full-renovation-wallasey.png",
         imageBg: "linear-gradient(150deg, #2A2A2C 0%, #3C3C3E 60%, #2A2A2C 100%)",
       },
       {
@@ -383,6 +384,7 @@ export const siteData = {
         ],
         tags: ["Rear Extension", "Open-Plan Kitchen", "Heswall"],
         imageAlt: "Single-storey rear extension with roof lantern, Heswall",
+        imageSrc: "/assets/02_single-storey-rear-kitchen-extension-heswall.png",
         imageBg: "linear-gradient(150deg, #1E1E20 0%, #2C2C2E 60%, #1E1E20 100%)",
       },
       {
@@ -410,6 +412,7 @@ export const siteData = {
         ],
         tags: ["Maintenance Contract", "Rental Portfolio", "Birkenhead"],
         imageAlt: "Rental property maintenance and repair work, Birkenhead",
+        imageSrc: "/assets/03_landlord-maintenance-contract-rental-properties-birkenhead.png",
         imageBg: "linear-gradient(150deg, #2A2A2C 0%, #383838 60%, #2A2A2C 100%)",
       },
       {
@@ -438,6 +441,7 @@ export const siteData = {
         ],
         tags: ["Full Re-Roof", "Natural Welsh Slate", "West Kirby"],
         imageAlt: "Full re-roof with natural Welsh slate, West Kirby",
+        imageSrc: "/assets/04_detached-property-full-re-roof-west-kirby.png",
         imageBg: "linear-gradient(150deg, #1E1E20 0%, #2C2C2E 60%, #1E1E20 100%)",
       },
       {
@@ -466,6 +470,7 @@ export const siteData = {
         ],
         tags: ["Kitchen Fitting", "En-Suite", "Bebington"],
         imageAlt: "New kitchen and en-suite fitting, Bebington",
+        imageSrc: "/assets/05_kitchen-replacement-with-en-suite-installation-bebington.png",
         imageBg: "linear-gradient(150deg, #2A2A2C 0%, #383838 60%, #2A2A2C 100%)",
       },
       {
@@ -494,6 +499,7 @@ export const siteData = {
         ],
         tags: ["External Render", "Silicone System", "Hoylake"],
         imageAlt: "Full external re-render in silicone system, Hoylake",
+        imageSrc: "/assets/06_full-silicone-external-re-render-hoylake.png",
         imageBg: "linear-gradient(150deg, #1E1E20 0%, #2C2C2E 60%, #1E1E20 100%)",
       },
     ],
