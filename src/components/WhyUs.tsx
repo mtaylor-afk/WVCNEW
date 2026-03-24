@@ -3,118 +3,291 @@
 import { motion } from "framer-motion";
 import { Star, Shield, MapPin, Award } from "lucide-react";
 import { siteData } from "@/lib/data";
-import { HouseIllustration } from "@/components/illustrations/HouseIllustration";
 
-const iconMap: Record<string, React.ElementType> = { Star, Shield, MapPin, Award };
+const iconMap: Record<string, React.ElementType> = {
+  Star,
+  Shield,
+  MapPin,
+  Award,
+};
 
 export default function WhyUs() {
-  const { whyUs } = siteData;
+  const { whyUs, hero } = siteData;
 
   return (
     <section
       id="why-us"
-      style={{
-        backgroundColor: "#FFFFFF",
-        padding: "120px 0",
-      }}
+      style={{ backgroundColor: "#0B1F3A", padding: "120px 0" }}
     >
       <div
-        style={{
-          maxWidth: "1120px",
-          margin: "0 auto",
-          padding: "0 24px",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "80px",
-          alignItems: "center",
-        }}
-        className="why-us-grid"
+        style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}
       >
-        {/* Left column — text */}
+        {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+          style={{ marginBottom: "72px" }}
         >
           <p
             style={{
               fontFamily: "'Inter', system-ui, sans-serif",
               fontWeight: 500,
-              fontSize: "12px",
-              letterSpacing: "0.12em",
+              fontSize: "11px",
+              letterSpacing: "0.16em",
               textTransform: "uppercase",
-              color: "#B8975A",
-              marginBottom: "16px",
+              color: "#C9A84C",
+              marginBottom: "20px",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
             }}
           >
+            <span
+              style={{
+                display: "block",
+                width: "24px",
+                height: "1px",
+                backgroundColor: "#C9A84C",
+              }}
+              aria-hidden="true"
+            />
             {whyUs.label}
           </p>
           <h2
             style={{
               fontFamily: "'Playfair Display', Georgia, serif",
-              fontWeight: 600,
-              fontSize: "clamp(36px, 4vw, 52px)",
-              lineHeight: 1.1,
-              color: "#1D1D1F",
-              letterSpacing: "-0.01em",
-              marginBottom: "24px",
+              fontWeight: 700,
+              fontSize: "clamp(38px, 5.5vw, 76px)",
+              lineHeight: 1.02,
+              color: "#FAF7F0",
+              letterSpacing: "-0.03em",
+              maxWidth: "680px",
             }}
           >
             {whyUs.heading}
           </h2>
-          <p
-            style={{
-              fontFamily: "'Inter', system-ui, sans-serif",
-              fontWeight: 400,
-              fontSize: "19px",
-              lineHeight: 1.6,
-              color: "#6E6E73",
-              marginBottom: "48px",
-            }}
-          >
-            {whyUs.body}
-          </p>
+        </motion.div>
 
-          {/* Feature list */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+        {/* Giant stats row */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          className="why-stats-row"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            borderTop: "1px solid rgba(250,247,240,0.09)",
+            borderBottom: "1px solid rgba(250,247,240,0.09)",
+            marginBottom: "80px",
+          }}
+        >
+          {hero.stats.map((stat, i) => (
+            <div
+              key={stat.label}
+              style={{
+                padding: "48px 32px",
+                borderRight:
+                  i < 2 ? "1px solid rgba(250,247,240,0.09)" : "none",
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontWeight: 700,
+                  fontSize: "clamp(44px, 6vw, 84px)",
+                  color: "#C9A84C",
+                  lineHeight: 1,
+                  letterSpacing: "-0.03em",
+                  marginBottom: "10px",
+                }}
+              >
+                {stat.number}
+              </div>
+              <div
+                style={{
+                  fontFamily: "'Inter', system-ui, sans-serif",
+                  fontWeight: 400,
+                  fontSize: "11px",
+                  letterSpacing: "0.09em",
+                  color: "rgba(250,247,240,0.38)",
+                  textTransform: "uppercase",
+                }}
+              >
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Two-column: body text + feature list */}
+        <div
+          className="why-us-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "80px",
+            alignItems: "start",
+          }}
+        >
+          {/* Left — text + rating card */}
+          <motion.div
+            initial={{ opacity: 0, x: -32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            <p
+              style={{
+                fontFamily: "'Inter', system-ui, sans-serif",
+                fontWeight: 400,
+                fontSize: "19px",
+                lineHeight: 1.72,
+                color: "rgba(250,247,240,0.6)",
+                marginBottom: "44px",
+              }}
+            >
+              {whyUs.body}
+            </p>
+
+            {/* Rating pill card */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "20px",
+                padding: "24px 28px",
+                borderRadius: "14px",
+                backgroundColor: "rgba(201,168,76,0.07)",
+                border: "1px solid rgba(201,168,76,0.16)",
+              }}
+            >
+              <div>
+                <div
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 700,
+                    fontSize: "40px",
+                    color: "#C9A84C",
+                    lineHeight: 1,
+                    letterSpacing: "-0.025em",
+                  }}
+                >
+                  {whyUs.rating.score}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "'Inter', system-ui, sans-serif",
+                    fontWeight: 400,
+                    fontSize: "11px",
+                    color: "rgba(250,247,240,0.38)",
+                    marginTop: "5px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                  }}
+                >
+                  {whyUs.rating.label}
+                </div>
+              </div>
+              <div
+                style={{
+                  width: "1px",
+                  height: "44px",
+                  backgroundColor: "rgba(201,168,76,0.2)",
+                  flexShrink: 0,
+                }}
+                aria-hidden="true"
+              />
+              <div>
+                <div
+                  style={{
+                    fontSize: "18px",
+                    color: "#C9A84C",
+                    letterSpacing: "4px",
+                    marginBottom: "5px",
+                  }}
+                  aria-label="Five star rating"
+                >
+                  ★★★★★
+                </div>
+                <div
+                  style={{
+                    fontFamily: "'Inter', system-ui, sans-serif",
+                    fontSize: "11px",
+                    color: "rgba(250,247,240,0.38)",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                  }}
+                >
+                  Verified reviews
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right — feature list */}
+          <motion.div
+            initial={{ opacity: 0, x: 32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             {whyUs.features.map((feature, i) => {
               const Icon = iconMap[feature.icon] ?? Star;
               return (
                 <motion.div
                   key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  viewport={{ once: true }}
                   transition={{
                     delay: i * 0.1,
                     duration: 0.6,
                     ease: [0.25, 0.1, 0.25, 1],
                   }}
-                  style={{ display: "flex", gap: "20px", alignItems: "flex-start" }}
+                  style={{
+                    display: "flex",
+                    gap: "20px",
+                    alignItems: "flex-start",
+                    padding: "28px 0",
+                    borderBottom:
+                      i < whyUs.features.length - 1
+                        ? "1px solid rgba(250,247,240,0.07)"
+                        : "none",
+                  }}
                 >
                   <div
                     style={{
                       flexShrink: 0,
-                      width: "44px",
-                      height: "44px",
-                      borderRadius: "12px",
-                      backgroundColor: "#F5F5F7",
+                      width: "42px",
+                      height: "42px",
+                      borderRadius: "11px",
+                      backgroundColor: "rgba(201,168,76,0.1)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
+                      marginTop: "1px",
                     }}
                   >
-                    <Icon size={20} color="#B8975A" strokeWidth={1.5} aria-hidden="true" />
+                    <Icon
+                      size={18}
+                      color="#C9A84C"
+                      strokeWidth={1.5}
+                      aria-hidden="true"
+                    />
                   </div>
                   <div>
                     <h3
                       style={{
                         fontFamily: "'Inter', system-ui, sans-serif",
-                        fontWeight: 500,
-                        fontSize: "16px",
-                        color: "#1D1D1F",
+                        fontWeight: 600,
+                        fontSize: "15px",
+                        color: "#FAF7F0",
                         marginBottom: "6px",
+                        letterSpacing: "-0.01em",
                       }}
                     >
                       {feature.title}
@@ -123,9 +296,9 @@ export default function WhyUs() {
                       style={{
                         fontFamily: "'Inter', system-ui, sans-serif",
                         fontWeight: 400,
-                        fontSize: "15px",
-                        color: "#6E6E73",
-                        lineHeight: 1.5,
+                        fontSize: "14px",
+                        color: "rgba(250,247,240,0.48)",
+                        lineHeight: 1.65,
                       }}
                     >
                       {feature.description}
@@ -134,112 +307,8 @@ export default function WhyUs() {
                 </motion.div>
               );
             })}
-          </div>
-        </motion.div>
-
-        {/* Right column — visual card */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-        >
-          <div
-            style={{
-              backgroundColor: "#F5F5F7",
-              borderRadius: "18px",
-              padding: "48px 40px",
-              textAlign: "center",
-            }}
-          >
-            {/* Illustration */}
-            <div style={{ marginBottom: "40px" }}>
-              <HouseIllustration />
-            </div>
-
-            {/* Stars */}
-            <div
-              style={{
-                fontSize: "28px",
-                color: "#B8975A",
-                marginBottom: "16px",
-                letterSpacing: "4px",
-              }}
-              aria-label="Five star rating"
-            >
-              ★★★★★
-            </div>
-
-            {/* Rating */}
-            <div
-              style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                fontWeight: 600,
-                fontSize: "32px",
-                color: "#1D1D1F",
-                marginBottom: "8px",
-              }}
-            >
-              {whyUs.rating.score}
-            </div>
-            <div
-              style={{
-                fontFamily: "'Inter', system-ui, sans-serif",
-                fontWeight: 400,
-                fontSize: "14px",
-                color: "#86868B",
-                marginBottom: "32px",
-              }}
-            >
-              {whyUs.rating.label}
-            </div>
-
-            {/* Avatar placeholders */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                gap: "-8px",
-              }}
-            >
-              {[
-                "#B8975A",
-                "#8A9BA8",
-                "#C4BAA8",
-                "#6B7C8A",
-                "#D4C9B5",
-              ].map((color, i) => (
-                <div
-                  key={i}
-                  style={{
-                    width: "36px",
-                    height: "36px",
-                    borderRadius: "50%",
-                    backgroundColor: color,
-                    border: "2px solid #F5F5F7",
-                    marginLeft: i > 0 ? "-10px" : "0",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    position: "relative",
-                    zIndex: 5 - i,
-                  }}
-                  aria-hidden="true"
-                >
-                  <div
-                    style={{
-                      width: "14px",
-                      height: "14px",
-                      borderRadius: "50%",
-                      backgroundColor: "rgba(255,255,255,0.3)",
-                      marginBottom: "4px",
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       <style>{`
@@ -247,6 +316,28 @@ export default function WhyUs() {
           .why-us-grid {
             grid-template-columns: 1fr !important;
             gap: 48px !important;
+          }
+          .why-stats-row {
+            grid-template-columns: 1fr 1fr !important;
+          }
+          .why-stats-row > div:nth-child(3) {
+            grid-column: span 2;
+            border-right: none !important;
+            border-top: 1px solid rgba(250,247,240,0.09);
+          }
+        }
+        @media (max-width: 480px) {
+          .why-stats-row {
+            grid-template-columns: 1fr !important;
+          }
+          .why-stats-row > div {
+            border-right: none !important;
+            border-bottom: 1px solid rgba(250,247,240,0.09);
+            padding: 32px 0 !important;
+          }
+          .why-stats-row > div:nth-child(3) {
+            grid-column: span 1;
+            border-bottom: none;
           }
         }
       `}</style>

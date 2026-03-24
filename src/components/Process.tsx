@@ -8,16 +8,14 @@ import type { ProcessStep } from "@/lib/data";
 export default function Process() {
   const { process } = siteData;
   const sectionRef = useRef<HTMLElement>(null);
-  const [lineWidth, setLineWidth] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setLineWidth(100);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -27,95 +25,112 @@ export default function Process() {
     <section
       id="process"
       ref={sectionRef}
-      style={{
-        backgroundColor: "#FFFFFF",
-        padding: "120px 0",
-      }}
+      style={{ backgroundColor: "#FFFFFF", padding: "120px 0" }}
     >
       <div
-        style={{
-          maxWidth: "1120px",
-          margin: "0 auto",
-          padding: "0 24px",
-        }}
+        style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}
       >
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-          style={{ textAlign: "center", marginBottom: "80px" }}
+          style={{
+            display: "flex",
+            alignItems: "flex-end",
+            justifyContent: "space-between",
+            marginBottom: "80px",
+            flexWrap: "wrap",
+            gap: "20px",
+          }}
         >
-          <p
-            style={{
-              fontFamily: "'Inter', system-ui, sans-serif",
-              fontWeight: 500,
-              fontSize: "12px",
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              color: "#B8975A",
-              marginBottom: "16px",
-            }}
-          >
-            {process.label}
-          </p>
-          <h2
-            style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
-              fontWeight: 600,
-              fontSize: "clamp(36px, 5vw, 56px)",
-              lineHeight: 1.1,
-              color: "#1D1D1F",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            {process.heading}
-          </h2>
+          <div>
+            <p
+              style={{
+                fontFamily: "'Inter', system-ui, sans-serif",
+                fontWeight: 500,
+                fontSize: "11px",
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+                color: "#C9A84C",
+                marginBottom: "14px",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+              }}
+            >
+              <span
+                style={{
+                  display: "block",
+                  width: "24px",
+                  height: "1px",
+                  backgroundColor: "#C9A84C",
+                }}
+                aria-hidden="true"
+              />
+              {process.label}
+            </p>
+            <h2
+              style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontWeight: 700,
+                fontSize: "clamp(38px, 5vw, 68px)",
+                lineHeight: 1.02,
+                color: "#0B1F3A",
+                letterSpacing: "-0.025em",
+              }}
+            >
+              {process.heading}
+            </h2>
+          </div>
         </motion.div>
 
         {/* Desktop timeline */}
         <div className="process-desktop" style={{ position: "relative" }}>
-          {/* Timeline base line */}
+          {/* Base line */}
           <div
             style={{
               position: "absolute",
-              top: "17px",
-              left: "12.5%",
-              right: "12.5%",
+              top: "27px",
+              left: "calc(12.5%)",
+              right: "calc(12.5%)",
               height: "1px",
-              backgroundColor: "#D2D2D7",
-              zIndex: 0,
+              backgroundColor: "rgba(11,31,58,0.09)",
             }}
+            aria-hidden="true"
           />
-
           {/* Animated gold line */}
           <div
             style={{
               position: "absolute",
-              top: "17px",
-              left: "12.5%",
+              top: "27px",
+              left: "calc(12.5%)",
               height: "1px",
-              backgroundColor: "#B8975A",
-              width: `${lineWidth}%`,
-              maxWidth: "75%",
-              zIndex: 1,
-              transition: "width 1.5s ease",
+              backgroundColor: "#C9A84C",
+              width: isVisible ? "75%" : "0%",
+              transition:
+                "width 1.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.4s",
             }}
+            aria-hidden="true"
           />
 
-          {/* Steps */}
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(4, 1fr)",
               gap: "24px",
               position: "relative",
-              zIndex: 2,
+              zIndex: 1,
             }}
           >
             {process.steps.map((step, i) => (
-              <ProcessStepCard key={step.number} step={step} index={i} />
+              <ProcessStepCard
+                key={step.number}
+                step={step}
+                index={i}
+                vertical={false}
+              />
             ))}
           </div>
         </div>
@@ -123,14 +138,15 @@ export default function Process() {
         {/* Mobile vertical stack */}
         <div
           className="process-mobile"
-          style={{
-            display: "none",
-            flexDirection: "column",
-            gap: "48px",
-          }}
+          style={{ display: "none", flexDirection: "column", gap: "48px" }}
         >
           {process.steps.map((step, i) => (
-            <ProcessStepCard key={step.number} step={step} index={i} vertical />
+            <ProcessStepCard
+              key={step.number}
+              step={step}
+              index={i}
+              vertical
+            />
           ))}
         </div>
       </div>
@@ -140,6 +156,9 @@ export default function Process() {
           .process-desktop { display: none !important; }
           .process-mobile { display: flex !important; }
         }
+        @media (prefers-reduced-motion: reduce) {
+          .process-line { transition: none !important; }
+        }
       `}</style>
     </section>
   );
@@ -148,17 +167,17 @@ export default function Process() {
 function ProcessStepCard({
   step,
   index,
-  vertical = false,
+  vertical,
 }: {
   step: ProcessStep;
   index: number;
-  vertical?: boolean;
+  vertical: boolean;
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: "-60px" }}
       transition={{
         delay: index * 0.15,
         duration: 0.7,
@@ -172,57 +191,60 @@ function ProcessStepCard({
         textAlign: vertical ? "left" : "center",
       }}
     >
-      {/* Circle indicator */}
+      {/* Step indicator */}
       <div
         style={{
           position: "relative",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          marginBottom: vertical ? "0" : "24px",
+          marginBottom: vertical ? "0" : "32px",
           flexShrink: 0,
         }}
       >
-        {/* Ghost number behind */}
+        {/* Ghost number */}
         {!vertical && (
           <span
             style={{
               position: "absolute",
               fontFamily: "'Playfair Display', Georgia, serif",
-              fontWeight: 700,
-              fontSize: "64px",
-              color: "rgba(29,29,31,0.06)",
+              fontWeight: 800,
+              fontSize: "76px",
+              color: "rgba(11,31,58,0.04)",
               lineHeight: 1,
-              top: "-16px",
+              top: "-20px",
               zIndex: 0,
               pointerEvents: "none",
+              userSelect: "none",
             }}
             aria-hidden="true"
           >
             {step.number}
           </span>
         )}
+
         {/* Circle */}
         <div
           style={{
-            width: "36px",
-            height: "36px",
+            width: "54px",
+            height: "54px",
             borderRadius: "50%",
-            border: "2px solid #B8975A",
+            border: "1.5px solid #C9A84C",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             backgroundColor: "#FFFFFF",
             position: "relative",
             zIndex: 1,
+            boxShadow: "0 0 0 7px rgba(201,168,76,0.06)",
           }}
         >
           <span
             style={{
-              fontFamily: "'Inter', system-ui, sans-serif",
+              fontFamily: "'Playfair Display', Georgia, serif",
               fontWeight: 600,
-              fontSize: "14px",
-              color: "#B8975A",
+              fontSize: "18px",
+              color: "#C9A84C",
             }}
           >
             {index + 1}
@@ -236,10 +258,11 @@ function ProcessStepCard({
           style={{
             fontFamily: "'Inter', system-ui, sans-serif",
             fontWeight: 600,
-            fontSize: "18px",
-            color: "#1D1D1F",
-            marginTop: vertical ? "0" : "20px",
+            fontSize: "17px",
+            color: "#0B1F3A",
+            marginTop: vertical ? "0" : "24px",
             marginBottom: "8px",
+            letterSpacing: "-0.01em",
           }}
         >
           {step.title}
@@ -248,9 +271,9 @@ function ProcessStepCard({
           style={{
             fontFamily: "'Inter', system-ui, sans-serif",
             fontWeight: 400,
-            fontSize: "15px",
+            fontSize: "14px",
             color: "#6E6E73",
-            lineHeight: 1.6,
+            lineHeight: 1.65,
           }}
         >
           {step.description}

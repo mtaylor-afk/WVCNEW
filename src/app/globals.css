@@ -251,7 +251,21 @@ input[type="number"] {
 /* Marketing page reset */
 .marketing-page {
   overflow-x: hidden;
-  background: #ffffff;
+  background: #0B1F3A; /* hero is dark; sections override individually */
+}
+
+/* Marketing form inputs — gold focus ring */
+.mkt-field input:focus,
+.mkt-field select:focus,
+.mkt-field textarea:focus {
+  outline: none;
+}
+
+/* Focus-visible keyboard outline for accessibility */
+.mkt-field input:focus-visible ~ label,
+.mkt-field select:focus-visible ~ label,
+.mkt-field textarea:focus-visible ~ label {
+  color: #C9A84C;
 }
 
 /* Marketing floating label */
@@ -304,21 +318,21 @@ input[type="number"] {
 .mkt-field textarea:not(:placeholder-shown) ~ label {
   top: 2px;
   font-size: 11px;
-  color: #B8975A;
+  color: #C9A84C;
   letter-spacing: 0.05em;
 }
 
 .mkt-field input:focus,
 .mkt-field select:focus,
 .mkt-field textarea:focus {
-  border-bottom: 2px solid #B8975A;
+  border-bottom: 2px solid #C9A84C;
 }
 
 .mkt-field.has-value label,
 .mkt-field.is-focused label {
   top: 2px;
   font-size: 11px;
-  color: #B8975A;
+  color: #C9A84C;
   letter-spacing: 0.05em;
 }
 
