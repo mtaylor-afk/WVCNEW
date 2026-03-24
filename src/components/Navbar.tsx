@@ -447,7 +447,6 @@ export default function Navbar() {
                 textAlign: "center",
                 marginBottom: "32px",
                 cursor: "pointer",
-                display: "block",
                 minHeight: "56px",
                 display: "flex",
                 alignItems: "center",
