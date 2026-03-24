@@ -22,28 +22,22 @@ export default function Testimonials() {
   const scroll = (direction: "left" | "right") => {
     const el = scrollRef.current;
     if (!el) return;
-    const amount = 440;
-    el.scrollBy({ left: direction === "left" ? -amount : amount, behavior: "smooth" });
+    el.scrollBy({
+      left: direction === "left" ? -440 : 440,
+      behavior: "smooth",
+    });
     setTimeout(updateScrollState, 400);
   };
 
   return (
     <section
       id="testimonials"
-      style={{
-        backgroundColor: "#F5F5F7",
-        padding: "120px 0",
-        overflow: "hidden",
-      }}
+      style={{ backgroundColor: "#FAF7F0", padding: "120px 0", overflow: "hidden" }}
     >
       <div
-        style={{
-          maxWidth: "1120px",
-          margin: "0 auto",
-          padding: "0 24px",
-        }}
+        style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}
       >
-        {/* Header with nav buttons */}
+        {/* Header */}
         <div
           style={{
             display: "flex",
@@ -55,32 +49,44 @@ export default function Testimonials() {
           }}
         >
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <p
               style={{
                 fontFamily: "'Inter', system-ui, sans-serif",
                 fontWeight: 500,
-                fontSize: "12px",
-                letterSpacing: "0.12em",
+                fontSize: "11px",
+                letterSpacing: "0.16em",
                 textTransform: "uppercase",
-                color: "#B8975A",
-                marginBottom: "12px",
+                color: "#C9A84C",
+                marginBottom: "14px",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
               }}
             >
+              <span
+                style={{
+                  display: "block",
+                  width: "24px",
+                  height: "1px",
+                  backgroundColor: "#C9A84C",
+                }}
+                aria-hidden="true"
+              />
               {testimonials.label}
             </p>
             <h2
               style={{
                 fontFamily: "'Playfair Display', Georgia, serif",
-                fontWeight: 600,
-                fontSize: "clamp(36px, 5vw, 56px)",
-                lineHeight: 1.1,
-                color: "#1D1D1F",
-                letterSpacing: "-0.01em",
+                fontWeight: 700,
+                fontSize: "clamp(38px, 5vw, 68px)",
+                lineHeight: 1.02,
+                color: "#0B1F3A",
+                letterSpacing: "-0.025em",
               }}
             >
               {testimonials.heading}
@@ -88,35 +94,37 @@ export default function Testimonials() {
           </motion.div>
 
           {/* Arrow buttons */}
-          <div style={{ display: "flex", gap: "12px" }}>
+          <div
+            style={{ display: "flex", gap: "10px", alignItems: "center" }}
+          >
             <NavButton
               direction="left"
               onClick={() => scroll("left")}
               disabled={!canScrollLeft}
-              aria-label="Scroll reviews left"
+              aria-label="Previous reviews"
             />
             <NavButton
               direction="right"
               onClick={() => scroll("right")}
               disabled={!canScrollRight}
-              aria-label="Scroll reviews right"
+              aria-label="Next reviews"
             />
           </div>
         </div>
       </div>
 
-      {/* Carousel — full-width overflow */}
+      {/* Carousel — edge-to-edge */}
       <div
         ref={scrollRef}
         onScroll={updateScrollState}
         className="testimonial-scroll"
         style={{
           display: "flex",
-          gap: "20px",
+          gap: "14px",
           overflowX: "auto",
           scrollSnapType: "x mandatory",
-          paddingLeft: "max(24px, calc((100vw - 1120px) / 2 + 24px))",
-          paddingRight: "max(24px, calc((100vw - 1120px) / 2 + 24px))",
+          paddingLeft: "max(24px, calc((100vw - 1200px) / 2 + 24px))",
+          paddingRight: "max(24px, calc((100vw - 1200px) / 2 + 24px))",
           paddingBottom: "8px",
         }}
       >
@@ -130,82 +138,147 @@ export default function Testimonials() {
 
 function ReviewCard({ review, index }: { review: Review; index: number }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
+    <motion.article
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-40px" }}
       transition={{
-        delay: index * 0.08,
+        delay: index * 0.06,
         duration: 0.7,
         ease: [0.25, 0.1, 0.25, 1],
       }}
       style={{
         flexShrink: 0,
-        width: "400px",
-        minHeight: "280px",
+        width: "380px",
         backgroundColor: "#FFFFFF",
-        borderRadius: "18px",
-        padding: "36px",
+        borderRadius: "16px",
+        padding: "40px 36px 36px",
         scrollSnapAlign: "start",
-        boxShadow: "0 2px 20px rgba(0,0,0,0.06)",
+        border: "1px solid rgba(11,31,58,0.07)",
         display: "flex",
         flexDirection: "column",
+        position: "relative",
+        overflow: "hidden",
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+      }}
+      onMouseEnter={(e) => {
+        (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
+        (e.currentTarget as HTMLElement).style.boxShadow =
+          "0 20px 56px rgba(11,31,58,0.1)";
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+        (e.currentTarget as HTMLElement).style.boxShadow = "none";
       }}
     >
+      {/* Large decorative quote mark */}
+      <div
+        style={{
+          fontFamily: "'Playfair Display', Georgia, serif",
+          fontSize: "88px",
+          lineHeight: 0.72,
+          color: "#C9A84C",
+          opacity: 0.13,
+          marginBottom: "20px",
+          userSelect: "none",
+          flexShrink: 0,
+        }}
+        aria-hidden="true"
+      >
+        &ldquo;
+      </div>
+
       {/* Stars */}
       <div
         style={{
-          fontSize: "16px",
-          color: "#B8975A",
-          letterSpacing: "2px",
-          marginBottom: "20px",
+          fontSize: "13px",
+          color: "#C9A84C",
+          letterSpacing: "3px",
+          marginBottom: "18px",
         }}
-        aria-label={`${review.stars} stars`}
+        aria-label={`${review.stars} out of 5 stars`}
       >
         {"★".repeat(review.stars)}
       </div>
 
-      {/* Quote */}
+      {/* Quote text */}
       <blockquote
         style={{
           fontFamily: "'Playfair Display', Georgia, serif",
           fontStyle: "italic",
           fontWeight: 400,
           fontSize: "17px",
-          color: "#1D1D1F",
-          lineHeight: 1.7,
+          color: "#0B1F3A",
+          lineHeight: 1.75,
           flex: 1,
           margin: 0,
         }}
       >
-        &ldquo;{review.quote}&rdquo;
+        {review.quote}
       </blockquote>
 
+      {/* Divider */}
+      <div
+        style={{
+          height: "1px",
+          backgroundColor: "rgba(11,31,58,0.07)",
+          margin: "24px 0 20px",
+        }}
+        aria-hidden="true"
+      />
+
       {/* Reviewer */}
-      <div style={{ marginTop: "28px" }}>
+      <footer style={{ display: "flex", alignItems: "center", gap: "12px" }}>
         <div
           style={{
-            fontFamily: "'Inter', system-ui, sans-serif",
-            fontWeight: 600,
-            fontSize: "14px",
-            color: "#1D1D1F",
+            width: "36px",
+            height: "36px",
+            borderRadius: "50%",
+            backgroundColor: "rgba(201,168,76,0.13)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0,
           }}
+          aria-hidden="true"
         >
-          {review.name}
+          <span
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontWeight: 600,
+              fontSize: "14px",
+              color: "#C9A84C",
+            }}
+          >
+            {review.name.charAt(0)}
+          </span>
         </div>
-        <div
-          style={{
-            fontFamily: "'Inter', system-ui, sans-serif",
-            fontWeight: 400,
-            fontSize: "13px",
-            color: "#86868B",
-            marginTop: "2px",
-          }}
-        >
-          {review.location}
+        <div>
+          <div
+            style={{
+              fontFamily: "'Inter', system-ui, sans-serif",
+              fontWeight: 600,
+              fontSize: "13px",
+              color: "#0B1F3A",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            {review.name}
+          </div>
+          <div
+            style={{
+              fontFamily: "'Inter', system-ui, sans-serif",
+              fontWeight: 400,
+              fontSize: "12px",
+              color: "#86868B",
+              marginTop: "1px",
+            }}
+          >
+            {review.location}
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </footer>
+    </motion.article>
   );
 }
 
@@ -226,31 +299,38 @@ function NavButton({
       disabled={disabled}
       aria-label={ariaLabel}
       style={{
-        width: "44px",
-        height: "44px",
+        width: "48px",
+        height: "48px",
         borderRadius: "50%",
-        backgroundColor: "#FFFFFF",
-        border: "1px solid #D2D2D7",
+        backgroundColor: disabled ? "transparent" : "#0B1F3A",
+        border: "1px solid",
+        borderColor: disabled ? "rgba(11,31,58,0.14)" : "#0B1F3A",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         cursor: disabled ? "default" : "pointer",
-        opacity: disabled ? 0.4 : 1,
-        transition: "background-color 0.2s ease, opacity 0.2s ease",
+        opacity: disabled ? 0.35 : 1,
+        transition: "background-color 0.25s ease, border-color 0.25s ease",
+        color: disabled ? "#0B1F3A" : "#FFFFFF",
+        flexShrink: 0,
       }}
       onMouseEnter={(e) => {
         if (!disabled) {
-          (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F5F5F7";
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#C9A84C";
+          (e.currentTarget as HTMLButtonElement).style.borderColor = "#C9A84C";
         }
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#FFFFFF";
+        if (!disabled) {
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#0B1F3A";
+          (e.currentTarget as HTMLButtonElement).style.borderColor = "#0B1F3A";
+        }
       }}
     >
       {direction === "left" ? (
-        <ChevronLeft size={20} color="#1D1D1F" aria-hidden="true" />
+        <ChevronLeft size={18} aria-hidden="true" />
       ) : (
-        <ChevronRight size={20} color="#1D1D1F" aria-hidden="true" />
+        <ChevronRight size={18} aria-hidden="true" />
       )}
     </button>
   );

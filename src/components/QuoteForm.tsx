@@ -33,7 +33,9 @@ export default function QuoteForm() {
   const [formState, setFormState] = useState<FormState>("idle");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -41,7 +43,6 @@ export default function QuoteForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormState("loading");
-    // Simulate async submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setFormState("success");
   };
@@ -56,42 +57,66 @@ export default function QuoteForm() {
   return (
     <section
       id="contact"
-      style={{
-        backgroundColor: "#1D1D1F",
-        padding: "120px 0",
-      }}
+      style={{ backgroundColor: "#0B1F3A", padding: "120px 0", position: "relative", overflow: "hidden" }}
     >
+      {/* Background glow */}
       <div
         style={{
-          maxWidth: "1120px",
+          position: "absolute",
+          bottom: "-10%",
+          right: "-5%",
+          width: "500px",
+          height: "500px",
+          background: "radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+        aria-hidden="true"
+      />
+
+      <div
+        style={{
+          maxWidth: "1200px",
           margin: "0 auto",
           padding: "0 24px",
           display: "grid",
           gridTemplateColumns: "1fr 1.1fr",
           gap: "80px",
           alignItems: "start",
+          position: "relative",
+          zIndex: 1,
         }}
         className="quote-grid"
       >
-        {/* Left — text */}
+        {/* Left — text + contact */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
+          initial={{ opacity: 0, x: -36 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          style={{ color: "#FFFFFF" }}
         >
           <p
             style={{
               fontFamily: "'Inter', system-ui, sans-serif",
               fontWeight: 500,
-              fontSize: "12px",
-              letterSpacing: "0.12em",
+              fontSize: "11px",
+              letterSpacing: "0.16em",
               textTransform: "uppercase",
-              color: "#B8975A",
-              marginBottom: "16px",
+              color: "#C9A84C",
+              marginBottom: "20px",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
             }}
           >
+            <span
+              style={{
+                display: "block",
+                width: "24px",
+                height: "1px",
+                backgroundColor: "#C9A84C",
+              }}
+              aria-hidden="true"
+            />
             {quote.label}
           </p>
           <h2
@@ -99,10 +124,10 @@ export default function QuoteForm() {
               fontFamily: "'Playfair Display', Georgia, serif",
               fontStyle: "italic",
               fontWeight: 700,
-              fontSize: "clamp(36px, 4.5vw, 64px)",
-              lineHeight: 1.1,
-              color: "#FFFFFF",
-              letterSpacing: "-0.02em",
+              fontSize: "clamp(36px, 4.5vw, 68px)",
+              lineHeight: 1.05,
+              color: "#FAF7F0",
+              letterSpacing: "-0.025em",
               marginBottom: "24px",
               whiteSpace: "pre-line",
             }}
@@ -113,16 +138,16 @@ export default function QuoteForm() {
             style={{
               fontFamily: "'Inter', system-ui, sans-serif",
               fontWeight: 400,
-              fontSize: "19px",
-              lineHeight: 1.6,
-              color: "rgba(255,255,255,0.6)",
+              fontSize: "18px",
+              lineHeight: 1.65,
+              color: "rgba(250,247,240,0.55)",
               marginBottom: "56px",
             }}
           >
             {quote.body}
           </p>
 
-          {/* Contact details */}
+          {/* Contact items */}
           <div>
             {contactItems.map((item, i) => {
               const Icon = item.icon;
@@ -132,9 +157,10 @@ export default function QuoteForm() {
                     <div
                       style={{
                         height: "1px",
-                        backgroundColor: "rgba(255,255,255,0.1)",
+                        backgroundColor: "rgba(250,247,240,0.08)",
                         margin: "20px 0",
                       }}
+                      aria-hidden="true"
                     />
                   )}
                   <div
@@ -144,18 +170,31 @@ export default function QuoteForm() {
                       gap: "16px",
                     }}
                   >
-                    <Icon
-                      size={18}
-                      color="#B8975A"
-                      strokeWidth={1.5}
-                      aria-hidden="true"
-                    />
+                    <div
+                      style={{
+                        width: "36px",
+                        height: "36px",
+                        borderRadius: "10px",
+                        backgroundColor: "rgba(201,168,76,0.1)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Icon
+                        size={16}
+                        color="#C9A84C"
+                        strokeWidth={1.5}
+                        aria-hidden="true"
+                      />
+                    </div>
                     <span
                       style={{
                         fontFamily: "'Inter', system-ui, sans-serif",
                         fontWeight: 400,
                         fontSize: "15px",
-                        color: "rgba(255,255,255,0.7)",
+                        color: "rgba(250,247,240,0.65)",
                       }}
                     >
                       {item.text}
@@ -169,15 +208,15 @@ export default function QuoteForm() {
 
         {/* Right — form card */}
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: 36 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <div
             style={{
               backgroundColor: "#FFFFFF",
-              borderRadius: "18px",
+              borderRadius: "20px",
               padding: "48px",
               minHeight: "520px",
               display: "flex",
@@ -190,14 +229,20 @@ export default function QuoteForm() {
                 <motion.form
                   key="form"
                   initial={{ opacity: 1 }}
-                  exit={{ opacity: 0, y: -20 }}
+                  exit={{ opacity: 0, y: -16 }}
                   transition={{ duration: 0.3 }}
                   onSubmit={handleSubmit}
                   noValidate
                 >
                   {/* Name row */}
                   <div
-                    style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px", marginBottom: "32px" }}
+                    className="form-row"
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "24px",
+                      marginBottom: "28px",
+                    }}
                   >
                     <FloatingField
                       id="firstName"
@@ -219,9 +264,15 @@ export default function QuoteForm() {
                     />
                   </div>
 
-                  {/* Phone + Email row */}
+                  {/* Phone + Email */}
                   <div
-                    style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px", marginBottom: "32px" }}
+                    className="form-row"
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "24px",
+                      marginBottom: "28px",
+                    }}
                   >
                     <FloatingField
                       id="phone"
@@ -243,8 +294,8 @@ export default function QuoteForm() {
                     />
                   </div>
 
-                  {/* Service select */}
-                  <div style={{ marginBottom: "32px" }}>
+                  {/* Service */}
+                  <div style={{ marginBottom: "28px" }}>
                     <FloatingSelect
                       id="service"
                       name="service"
@@ -257,7 +308,7 @@ export default function QuoteForm() {
                   </div>
 
                   {/* Postcode */}
-                  <div style={{ marginBottom: "32px" }}>
+                  <div style={{ marginBottom: "28px" }}>
                     <FloatingField
                       id="postcode"
                       name="postcode"
@@ -270,7 +321,7 @@ export default function QuoteForm() {
                   </div>
 
                   {/* Description */}
-                  <div style={{ marginBottom: "40px" }}>
+                  <div style={{ marginBottom: "36px" }}>
                     <FloatingTextarea
                       id="description"
                       name="description"
@@ -280,13 +331,15 @@ export default function QuoteForm() {
                     />
                   </div>
 
-                  {/* Submit button */}
                   <SubmitButton loading={formState === "loading"}>
                     {quote.button}
                   </SubmitButton>
                 </motion.form>
               ) : (
-                <SuccessState heading={quote.success.heading} body={quote.success.body} />
+                <SuccessState
+                  heading={quote.success.heading}
+                  body={quote.success.body}
+                />
               )}
             </AnimatePresence>
           </div>
@@ -303,6 +356,9 @@ export default function QuoteForm() {
         @media (max-width: 480px) {
           .quote-grid > div:last-child > div {
             padding: 32px 24px !important;
+          }
+          .form-row {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>
@@ -365,10 +421,7 @@ function FloatingSelect({
   required?: boolean;
 }) {
   return (
-    <div
-      className="mkt-field"
-      style={{ position: "relative" }}
-    >
+    <div className="mkt-field" style={{ position: "relative" }}>
       <select
         id={id}
         name={name}
@@ -376,7 +429,7 @@ function FloatingSelect({
         onChange={onChange}
         required={required}
         aria-label={label}
-        style={{ color: value ? "#1D1D1F" : "transparent" }}
+        style={{ color: value ? "#1D1D1F" : "transparent", cursor: "pointer" }}
       >
         <option value="" disabled />
         {options.map((opt) => (
@@ -390,7 +443,7 @@ function FloatingSelect({
         style={{
           top: value ? "2px" : "20px",
           fontSize: value ? "11px" : "16px",
-          color: value ? "#B8975A" : "#6E6E73",
+          color: value ? "#C9A84C" : "#6E6E73",
           letterSpacing: value ? "0.05em" : "normal",
         }}
       >
@@ -437,28 +490,39 @@ function SubmitButton({
   loading: boolean;
 }) {
   return (
-    <motion.button
+    <button
       type="submit"
       disabled={loading}
-      whileHover={loading ? {} : { backgroundColor: "#B8975A" }}
       style={{
         width: "100%",
         height: "56px",
-        backgroundColor: "#1D1D1F",
-        color: "#FFFFFF",
+        backgroundColor: "#0B1F3A",
+        color: "#FAF7F0",
         border: "none",
         borderRadius: "980px",
         fontFamily: "'Inter', system-ui, sans-serif",
-        fontWeight: 500,
-        fontSize: "14px",
-        letterSpacing: "0.08em",
+        fontWeight: 600,
+        fontSize: "13px",
+        letterSpacing: "0.1em",
         textTransform: "uppercase",
         cursor: loading ? "wait" : "pointer",
-        transition: "background-color 0.3s ease",
+        transition: "background-color 0.25s ease, transform 0.15s ease",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         gap: "12px",
+      }}
+      onMouseEnter={(e) => {
+        if (!loading) {
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#C9A84C";
+          (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.01)";
+        }
+      }}
+      onMouseLeave={(e) => {
+        if (!loading) {
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#0B1F3A";
+          (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
+        }
       }}
     >
       {loading ? (
@@ -469,7 +533,7 @@ function SubmitButton({
       ) : (
         children
       )}
-    </motion.button>
+    </button>
   );
 }
 
@@ -484,10 +548,16 @@ function Spinner() {
       style={{ animation: "spin 0.8s linear infinite" }}
     >
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-      <circle cx="9" cy="9" r="7" stroke="rgba(255,255,255,0.3)" strokeWidth="2" />
+      <circle
+        cx="9"
+        cy="9"
+        r="7"
+        stroke="rgba(250,247,240,0.25)"
+        strokeWidth="2"
+      />
       <path
         d="M9 2a7 7 0 0 1 7 7"
-        stroke="#FFFFFF"
+        stroke="#FAF7F0"
         strokeWidth="2"
         strokeLinecap="round"
       />
@@ -495,7 +565,13 @@ function Spinner() {
   );
 }
 
-function SuccessState({ heading, body }: { heading: string; body: string }) {
+function SuccessState({
+  heading,
+  body,
+}: {
+  heading: string;
+  body: string;
+}) {
   return (
     <motion.div
       key="success"
@@ -511,14 +587,26 @@ function SuccessState({ heading, body }: { heading: string; body: string }) {
         gap: "24px",
       }}
     >
-      {/* Animated checkmark SVG */}
-      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" aria-hidden="true">
-        <circle cx="40" cy="40" r="36" stroke="#B8975A" strokeWidth="2" opacity="0.2" />
-        <circle cx="40" cy="40" r="28" fill="#F5F5F7" />
+      <svg
+        width="80"
+        height="80"
+        viewBox="0 0 80 80"
+        fill="none"
+        aria-hidden="true"
+      >
+        <circle
+          cx="40"
+          cy="40"
+          r="36"
+          stroke="#C9A84C"
+          strokeWidth="1.5"
+          opacity="0.2"
+        />
+        <circle cx="40" cy="40" r="28" fill="#FAF7F0" />
         <motion.path
           d="M26 40 L36 50 L54 30"
-          stroke="#B8975A"
-          strokeWidth="3"
+          stroke="#C9A84C"
+          strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
           fill="none"
@@ -533,9 +621,10 @@ function SuccessState({ heading, body }: { heading: string; body: string }) {
           fontFamily: "'Playfair Display', Georgia, serif",
           fontStyle: "italic",
           fontWeight: 600,
-          fontSize: "40px",
-          color: "#1D1D1F",
+          fontSize: "clamp(28px, 4vw, 40px)",
+          color: "#0B1F3A",
           lineHeight: 1.1,
+          letterSpacing: "-0.02em",
         }}
       >
         {heading}
@@ -546,7 +635,7 @@ function SuccessState({ heading, body }: { heading: string; body: string }) {
           fontWeight: 400,
           fontSize: "17px",
           color: "#6E6E73",
-          lineHeight: 1.6,
+          lineHeight: 1.65,
         }}
       >
         {body}
