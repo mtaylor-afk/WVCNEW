@@ -65,7 +65,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       </header>
 
       {/* Page Content */}
-      <main className="flex-1 overflow-hidden relative">
+      <main id="main-content" className="flex-1 overflow-hidden relative">
         <AnimatePresence mode="wait">
           <motion.div
             key={pathname}
@@ -90,6 +90,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               <button
                 key={item.href}
                 onClick={() => router.push(item.href)}
+                aria-label={item.label}
+                aria-current={isActive ? "page" : undefined}
                 className={cn(
                   "flex-1 flex flex-col items-center justify-center py-2 gap-1 touch-target transition-colors relative",
                   isActive ? "text-gold" : "text-cream/40"

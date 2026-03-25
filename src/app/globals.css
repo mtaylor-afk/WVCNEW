@@ -18,6 +18,51 @@
   -webkit-touch-callout: none;
 }
 
+/* =====================================================
+   ACCESSIBILITY — FOCUS STYLES
+   ===================================================== */
+
+/* Visible focus ring for all interactive elements */
+:focus-visible {
+  outline: 2px solid #C9A84C;
+  outline-offset: 2px;
+}
+
+/* Ensure focus rings are not clipped */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #C9A84C;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #C9A84C;
+  color: #0B1F3A;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 24px;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  z-index: 9999;
+  white-space: nowrap;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: none;
+}
+
 html {
   height: 100%;
   overscroll-behavior: none;
@@ -343,6 +388,29 @@ input[type="number"] {
   animation: marquee 35s linear infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .shimmer,
+  .skeleton {
+    animation: none;
+  }
+  .shimmer-btn::after {
+    display: none;
+  }
+  .svg-draw {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .process-line-animated {
+    transition: none;
+  }
+  .collapsible-content {
+    transition: none;
+  }
+}
+
 /* Hide scrollbar for testimonial carousel */
 .testimonial-scroll::-webkit-scrollbar {
   display: none;
@@ -413,4 +481,37 @@ body:has(.our-work-page) {
   overflow: auto;
   overscroll-behavior: auto;
   touch-action: pan-y;
+}
+
+/* QuoteCalc marketing site scrolling */
+html:has(.quotecalc-page) {
+  height: auto;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+
+body:has(.quotecalc-page) {
+  height: auto;
+  overflow: auto;
+  overscroll-behavior: auto;
+  background: #ffffff;
+}
+
+/* QuoteCalc design tokens */
+.quotecalc-page {
+  --qc-dark: #0B1424;
+  --qc-blue: #2563EB;
+  --qc-orange: #F97316;
+  --qc-text: #0F172A;
+  --qc-muted: #64748B;
+  --qc-border: rgba(15, 23, 42, 0.08);
+  --qc-light: #F8FAFC;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* QuoteCalc focus ring on dark backgrounds */
+.quotecalc-page :focus-visible {
+  outline: 2px solid #F97316;
+  outline-offset: 2px;
+  border-radius: 4px;
 }

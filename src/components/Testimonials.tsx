@@ -113,11 +113,16 @@ export default function Testimonials() {
         </div>
       </div>
 
+      {/* Screen reader live region for carousel */}
+      <div aria-live="polite" aria-atomic="false" className="sr-only" />
+
       {/* Carousel — edge-to-edge */}
       <div
         ref={scrollRef}
         onScroll={updateScrollState}
         className="testimonial-scroll"
+        role="region"
+        aria-label="Customer reviews carousel"
         style={{
           display: "flex",
           gap: "14px",
