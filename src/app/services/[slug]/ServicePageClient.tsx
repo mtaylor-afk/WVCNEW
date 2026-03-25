@@ -150,9 +150,23 @@ export default function ServicePageClient({ service }: { service: ServiceItem })
           paddingBottom: "80px",
           backgroundColor: "#F5F5F7",
           borderBottom: "1px solid #E5E5EA",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        <div style={{ maxWidth: "1120px", margin: "0 auto", padding: "0 24px" }}>
+        {service.imageSrc && (
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              backgroundImage: `url(${service.imageSrc})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              opacity: 0.18,
+            }}
+          />
+        )}
+        <div style={{ maxWidth: "1120px", margin: "0 auto", padding: "0 24px", position: "relative" }}>
           <motion.div {...fadeUp}>
             <Link
               href="/#services"

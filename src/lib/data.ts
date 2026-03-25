@@ -49,6 +49,7 @@ export const siteData = {
         id: "renovations",
         name: "Full Renovations",
         icon: "Home",
+        imageSrc: "/assets/service-hero-renovations.jpg",
         description:
           "Complete home transformations from structural work to finishing touches. We manage every trade, every detail, every step of the way.",
         hero: "Complete home transformations, managed end-to-end.",
@@ -67,6 +68,7 @@ export const siteData = {
         id: "extensions",
         name: "Extensions & Loft Conversions",
         icon: "Maximize2",
+        imageSrc: "/assets/service-hero-extensions.jpg",
         description:
           "Thoughtfully designed extensions that blend seamlessly with your existing property. Structural expertise with an eye for proportion.",
         hero: "Intelligent extensions that increase space, value, and livability.",
@@ -85,6 +87,7 @@ export const siteData = {
         id: "maintenance",
         name: "Building Maintenance",
         icon: "Wrench",
+        imageSrc: "/assets/service-hero-maintenance.jpg",
         description:
           "Ongoing maintenance contracts and one-off repairs. We keep properties in exceptional condition, proactively and efficiently.",
         hero: "Keep your property in exceptional condition, always.",
@@ -103,6 +106,7 @@ export const siteData = {
         id: "roofing",
         name: "Roofing",
         icon: "Triangle",
+        imageSrc: "/assets/service-hero-roofing.jpg",
         description:
           "Flat roofs, pitched roofs, re-roofing, and repairs. Fully certified, guaranteed workmanship on every roofing project.",
         hero: "Fully certified roofing, guaranteed to last.",
@@ -121,6 +125,7 @@ export const siteData = {
         id: "kitchens",
         name: "Kitchen & Bathroom Fitting",
         icon: "LayoutGrid",
+        imageSrc: "/assets/service-hero-kitchens.jpg",
         description:
           "High-specification kitchen and bathroom installations. Supply and fit, or fit-only — exactly as you need it.",
         hero: "High-specification kitchens and bathrooms, fitted to perfection.",
@@ -139,6 +144,7 @@ export const siteData = {
         id: "brickwork",
         name: "Brickwork & Rendering",
         icon: "Layers",
+        imageSrc: "/assets/service-hero-brickwork.jpg",
         description:
           "Expert brickwork, repointing, and rendering services. Clean lines, solid construction, beautiful results.",
         hero: "Expert masonry that stands the test of time.",
