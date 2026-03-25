@@ -482,3 +482,36 @@ body:has(.our-work-page) {
   overscroll-behavior: auto;
   touch-action: pan-y;
 }
+
+/* QuoteCalc marketing site scrolling */
+html:has(.quotecalc-page) {
+  height: auto;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+
+body:has(.quotecalc-page) {
+  height: auto;
+  overflow: auto;
+  overscroll-behavior: auto;
+  background: #ffffff;
+}
+
+/* QuoteCalc design tokens */
+.quotecalc-page {
+  --qc-dark: #0B1424;
+  --qc-blue: #2563EB;
+  --qc-orange: #F97316;
+  --qc-text: #0F172A;
+  --qc-muted: #64748B;
+  --qc-border: rgba(15, 23, 42, 0.08);
+  --qc-light: #F8FAFC;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* QuoteCalc focus ring on dark backgrounds */
+.quotecalc-page :focus-visible {
+  outline: 2px solid #F97316;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
