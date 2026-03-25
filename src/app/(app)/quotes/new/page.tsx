@@ -86,9 +86,10 @@ function SortableLineItem({
         <button
           {...attributes}
           {...listeners}
+          aria-label={`Drag to reorder item ${index + 1}`}
           className="mt-1 p-1 touch-target text-navy/30 cursor-grab active:cursor-grabbing"
         >
-          <GripVertical size={18} />
+          <GripVertical size={18} aria-hidden="true" />
         </button>
 
         <div className="flex-1 min-w-0 space-y-2">
@@ -101,6 +102,7 @@ function SortableLineItem({
               value={item.description}
               onChange={(e) => onChange(item.id, "description", e.target.value)}
               placeholder="Description..."
+              aria-label={`Item ${index + 1} description`}
               className="flex-1 bg-transparent border-b border-navy/20 focus:border-gold pb-1 text-navy font-syne text-sm focus:outline-none placeholder-navy/30"
             />
           </div>
@@ -128,9 +130,11 @@ function SortableLineItem({
           <div className="flex items-center justify-between">
             <button
               onClick={() => setShowNotes(!showNotes)}
+              aria-expanded={showNotes}
+              aria-label={showNotes ? `Hide notes for item ${index + 1}` : `Add notes for item ${index + 1}`}
               className="text-xs text-gold/70 font-syne flex items-center gap-1"
             >
-              {showNotes ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+              {showNotes ? <ChevronUp size={12} aria-hidden="true" /> : <ChevronDown size={12} aria-hidden="true" />}
               {showNotes ? "Hide notes" : "Add notes"}
             </button>
 
@@ -140,6 +144,7 @@ function SortableLineItem({
                 value={amountStr}
                 onChange={(e) => setAmountStr(e.target.value)}
                 onBlur={handleAmountBlur}
+                aria-label={`Amount for item ${index + 1} in pounds`}
                 className="w-24 text-right bg-transparent border-b border-navy/20 focus:border-gold pb-1 text-navy font-mono text-sm font-semibold focus:outline-none"
               />
             </div>
@@ -149,9 +154,10 @@ function SortableLineItem({
         {/* Delete button */}
         <button
           onClick={() => onDelete(item.id)}
+          aria-label={`Delete item ${index + 1}`}
           className="mt-1 p-1 touch-target text-red-400 hover:text-red-600"
         >
-          <Trash2 size={16} />
+          <Trash2 size={16} aria-hidden="true" />
         </button>
       </div>
     </motion.div>
@@ -464,14 +470,19 @@ export default function NewQuotePage() {
               className="space-y-3"
             >
               {/* Running total bar */}
-              <div className="bg-navy rounded-xl px-4 py-3 flex items-center justify-between">
+              <div
+                className="bg-navy rounded-xl px-4 py-3 flex items-center justify-between"
+                aria-live="polite"
+                aria-atomic="true"
+                aria-label={`Running total: ${formatCurrency(grandTotal)}${vatEnabled ? ` including VAT at ${vatRate}%` : ""}`}
+              >
                 <div>
-                  <p className="font-syne text-cream/60 text-xs">Running Total</p>
-                  <p className="font-cormorant font-semibold text-gold text-2xl leading-none">
+                  <p className="font-syne text-cream/60 text-xs" aria-hidden="true">Running Total</p>
+                  <p className="font-cormorant font-semibold text-gold text-2xl leading-none" aria-hidden="true">
                     {formatCurrency(grandTotal)}
                   </p>
                   {vatEnabled && (
-                    <p className="font-syne text-cream/50 text-xs mt-0.5">
+                    <p className="font-syne text-cream/50 text-xs mt-0.5" aria-hidden="true">
                       incl. VAT @ {vatRate}%
                     </p>
                   )}

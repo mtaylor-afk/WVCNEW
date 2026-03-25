@@ -1,18 +1,21 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Menu } from "lucide-react";
 import Link from "next/link";
 import { siteData } from "@/lib/data";
 
 const SECTION_IDS = ["services", "why-us", "testimonials", "process", "contact"];
+const MOBILE_MENU_ID = "mobile-nav-menu";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
   const [mobileOpen, setMobileOpen] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
@@ -35,6 +38,23 @@ export default function Navbar() {
     });
     return () => observerRef.current?.disconnect();
   }, []);
+
+  // Focus close button when mobile menu opens
+  useEffect(() => {
+    if (mobileOpen && closeButtonRef.current) {
+      closeButtonRef.current.focus();
+    }
+  }, [mobileOpen]);
+
+  // Trap focus inside mobile menu and handle Escape key
+  const handleMenuKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === "Escape") {
+        setMobileOpen(false);
+      }
+    },
+    []
+  );
 
   const scrollTo = (href: string) => {
     const id = href.replace("#", "");
@@ -153,6 +173,7 @@ export default function Navbar() {
                     e.preventDefault();
                     scrollTo(link.href);
                   }}
+                  aria-current={isActive ? "true" : undefined}
                   style={{
                     fontFamily: "'Inter', system-ui, sans-serif",
                     fontWeight: isActive ? 500 : 400,
@@ -232,7 +253,7 @@ export default function Navbar() {
                 transition: "background-color 0.25s ease",
                 alignItems: "center",
                 cursor: "pointer",
-                height: "40px",
+                height: "44px",
                 whiteSpace: "nowrap",
               }}
               onMouseEnter={(e) => {
@@ -251,6 +272,8 @@ export default function Navbar() {
               onClick={() => setMobileOpen(true)}
               aria-label="Open navigation menu"
               aria-expanded={mobileOpen}
+              aria-controls={MOBILE_MENU_ID}
+              aria-haspopup="dialog"
               className="flex md:hidden"
               style={{
                 background: "rgba(11,31,58,0.07)",
@@ -260,8 +283,8 @@ export default function Navbar() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: "40px",
-                height: "40px",
+                width: "44px",
+                height: "44px",
                 borderRadius: "50%",
                 flexShrink: 0,
                 transition: "background-color 0.2s ease",
@@ -277,6 +300,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id={MOBILE_MENU_ID}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -293,6 +317,7 @@ export default function Navbar() {
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
+            onKeyDown={handleMenuKeyDown}
           >
             {/* Mobile header */}
             <div
@@ -335,6 +360,7 @@ export default function Navbar() {
                 </span>
               </div>
               <button
+                ref={closeButtonRef}
                 onClick={() => setMobileOpen(false)}
                 aria-label="Close navigation menu"
                 style={{

@@ -11,12 +11,14 @@ export default function MarketingPage() {
   return (
     <div className="marketing-page bg-white overflow-x-hidden">
       <Navbar />
+      <main id="main-content">
       <Hero />
       <Services />
       <WhyUs />
       <Testimonials />
       <Process />
       <QuoteForm />
+      </main>
       <Footer />
     </div>
   );

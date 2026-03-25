@@ -46,7 +46,7 @@ export default function Footer() {
                 fontFamily: "'Inter', system-ui, sans-serif",
                 fontWeight: 400,
                 fontSize: "13px",
-                color: "rgba(250,247,240,0.35)",
+                color: "rgba(250,247,240,0.65)",
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
                 marginBottom: "10px",
@@ -172,7 +172,7 @@ export default function Footer() {
                 fontFamily: "'Inter', system-ui, sans-serif",
                 fontWeight: 300,
                 fontSize: "14px",
-                color: "rgba(250,247,240,0.38)",
+                color: "rgba(250,247,240,0.72)",
                 lineHeight: 1.65,
                 marginBottom: "28px",
                 maxWidth: "240px",
@@ -207,7 +207,7 @@ export default function Footer() {
                 fontSize: "11px",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "rgba(250,247,240,0.28)",
+                color: "rgba(250,247,240,0.60)",
                 marginBottom: "20px",
               }}
             >
@@ -236,11 +236,11 @@ export default function Footer() {
                         fontFamily: "'Inter', system-ui, sans-serif",
                         fontWeight: 400,
                         fontSize: "14px",
-                        color: "rgba(250,247,240,0.55)",
+                        color: "rgba(250,247,240,0.75)",
                         textDecoration: "none",
                         transition: "color 0.2s ease",
                         cursor: "pointer",
-                        minHeight: "32px",
+                        minHeight: "44px",
                         display: "inline-flex",
                         alignItems: "center",
                       }}
@@ -250,7 +250,7 @@ export default function Footer() {
                       }}
                       onMouseLeave={(e) => {
                         (e.currentTarget as HTMLAnchorElement).style.color =
-                          "rgba(250,247,240,0.55)";
+                          "rgba(250,247,240,0.75)";
                       }}
                     >
                       {link.label}
@@ -297,7 +297,7 @@ export default function Footer() {
                 fontSize: "11px",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "rgba(250,247,240,0.28)",
+                color: "rgba(250,247,240,0.60)",
                 marginBottom: "20px",
               }}
             >
@@ -328,7 +328,7 @@ export default function Footer() {
                 fontSize: "11px",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "rgba(250,247,240,0.28)",
+                color: "rgba(250,247,240,0.60)",
                 marginBottom: "20px",
               }}
             >
@@ -358,7 +358,7 @@ export default function Footer() {
                   fontFamily: "'Inter', system-ui, sans-serif",
                   fontWeight: 400,
                   fontSize: "11px",
-                  color: "rgba(250,247,240,0.22)",
+                  color: "rgba(250,247,240,0.60)",
                   lineHeight: 1.5,
                   marginBottom: "6px",
                 }}
@@ -377,16 +377,15 @@ export default function Footer() {
                   fontFamily: "'Inter', system-ui, sans-serif",
                   fontWeight: 500,
                   fontSize: "12px",
-                  color: "rgba(201,168,76,0.55)",
+                  color: "#C9A84C",
                   textDecoration: "none",
                   transition: "color 0.2s ease",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#C9A84C";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#DFB23A";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.color =
-                    "rgba(201,168,76,0.55)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#C9A84C";
                 }}
               >
                 {siteData.ourWork.verifiedReviews.platform}
@@ -413,7 +412,7 @@ export default function Footer() {
               fontFamily: "'Inter', system-ui, sans-serif",
               fontWeight: 400,
               fontSize: "12px",
-              color: "rgba(250,247,240,0.25)",
+              color: "rgba(250,247,240,0.55)",
             }}
           >
             {footer.copyright}
@@ -423,7 +422,7 @@ export default function Footer() {
               fontFamily: "'Inter', system-ui, sans-serif",
               fontWeight: 400,
               fontSize: "12px",
-              color: "rgba(250,247,240,0.18)",
+              color: "rgba(250,247,240,0.45)",
             }}
           >
             Built with care on the Wirral
@@ -471,8 +470,8 @@ function SocialLink({
       rel="noopener noreferrer"
       aria-label={ariaLabel}
       style={{
-        width: "36px",
-        height: "36px",
+        width: "44px",
+        height: "44px",
         borderRadius: "50%",
         backgroundColor: "rgba(250,247,240,0.07)",
         display: "flex",
@@ -507,7 +506,7 @@ function FooterDetail({ label, value }: { label: string; value: string }) {
           fontFamily: "'Inter', system-ui, sans-serif",
           fontWeight: 400,
           fontSize: "11px",
-          color: "rgba(250,247,240,0.22)",
+          color: "rgba(250,247,240,0.60)",
           display: "block",
           marginBottom: "2px",
           textTransform: "uppercase",
@@ -521,7 +520,7 @@ function FooterDetail({ label, value }: { label: string; value: string }) {
           fontFamily: "'Inter', system-ui, sans-serif",
           fontWeight: 400,
           fontSize: "13.5px",
-          color: "rgba(250,247,240,0.42)",
+          color: "rgba(250,247,240,0.80)",
         }}
       >
         {value}
